@@ -10,6 +10,7 @@
 	import { GameVersion, Modals } from 'components-ui-html';
 
 	import { getContext } from '../game/context';
+	import LoadingScreen from './LoadingScreen.svelte';
 
 	const context = getContext();
 
@@ -28,7 +29,7 @@
 
 
 	{#if context.stateLayout.showLoadingScreen}
-		<div>Loading</div>
+		<LoadingScreen onloaded={() => (context.stateLayout.showLoadingScreen = false)} />
 	{:else}
 		
 

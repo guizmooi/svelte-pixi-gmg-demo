@@ -19,9 +19,7 @@
 </script>
 
 <GlobalStyle>
-	<Authenticate>
-			<Game />
-	</Authenticate>
+	<Game />
 </GlobalStyle>
 
 <LoaderStakeEngine src={loaderUrlStakeEngine} oncomplete={() => (showYourLoader = true)} />

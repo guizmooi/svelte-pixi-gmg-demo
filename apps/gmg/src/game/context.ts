@@ -1,13 +1,15 @@
 import { setContextEventEmitter, getContextEventEmitter } from 'utils-event-emitter';
 import { setContextLayout, getContextLayout } from 'utils-layout';
-import { getContextApp } from 'pixi-svelte';
+import { getContextApp, setContextApp } from 'pixi-svelte';
 
 import { eventEmitter, type EmitterEvent } from './eventEmitter';
 import { stateLayout, stateLayoutDerived } from './stateLayout';
+import { stateApp } from './stateApp';
 
 export const setContext = () => {
 	setContextEventEmitter<EmitterEvent>({ eventEmitter });
 	setContextLayout({ stateLayout, stateLayoutDerived });
+	setContextApp({ stateApp });
 };
 
 export const getContext = () => ({
