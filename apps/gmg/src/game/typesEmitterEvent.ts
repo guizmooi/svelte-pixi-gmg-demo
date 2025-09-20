@@ -1,3 +1,1 @@
-import type { EmitterEventGame } from '../components/Game.svelte';
-
-export type EmitterEventGameGmg = EmitterEventGame;
+export type EmitterEventGame = any;

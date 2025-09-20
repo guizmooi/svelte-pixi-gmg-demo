@@ -1,85 +1,61 @@
-<script lang="ts" module>
-	export type EmitterEventGame =
-		| { type: 'gameReveal'; symbols: string[]; result: 'win' | 'lose' }
-		| { type: 'gameWin'; amount: number }
-		| { type: 'gameSpin' }
-		| { type: 'gameIdle' };
-</script>
-
 <script lang="ts">
-	import { App, Container, Text } from 'pixi-svelte';
+	import { onMount } from 'svelte';
+
+	import { EnablePixiExtension } from 'components-pixi';
+	import { EnableHotkey } from 'components-shared';
+	import { App, Text, REM } from 'pixi-svelte';
+	import { stateModal } from 'state-shared';
+
+	import { UI, UiGameName } from 'components-ui-pixi';
+	import { GameVersion, Modals } from 'components-ui-html';
+
 	import { getContext } from '../game/context';
-	import { REM } from 'constants-shared';
-	import GameBoard from './GameBoard.svelte';
-	import WinDisplay from './WinDisplay.svelte';
 
 	const context = getContext();
 
-	let isSpinning = $state(false);
-	let currentWin = $state(0);
-	let symbols = $state(['?', '?', '?']);
+	onMount(() => (context.stateLayout.showLoadingScreen = true));
 
 	context.eventEmitter.subscribeOnMount({
-		gameSpin: () => {
-			isSpinning = true;
-			symbols = ['?', '?', '?'];
-			currentWin = 0;
+		buyBonusConfirm: () => {
+			stateModal.modal = { name: 'buyBonusConfirm' };
 		},
-		gameReveal: (emitterEvent) => {
-			symbols = emitterEvent.symbols;
-			isSpinning = false;
-		},
-		gameWin: (emitterEvent) => {
-			currentWin = emitterEvent.amount;
-		},
-		gameIdle: () => {
-			isSpinning = false;
-		}
 	});
 </script>
 
-<App
-	width={context.stateLayoutDerived.canvasSizes().width}
-	height={context.stateLayoutDerived.canvasSizes().height}
-	backgroundColor={0x2c3e50}
->
-	<Container x={context.stateLayoutDerived.canvasSizes().width / 2} y={50} anchor={{ x: 0.5, y: 0 }}>
-		<Text
-			text="GMG DEMO GAME"
-			style={{
-				fontFamily: 'Arial',
-				fontSize: REM * 2,
-				fontWeight: 'bold',
-				fill: 0xffffff
-			}}
-			anchor={{ x: 0.5, y: 0 }}
-		/>
-	</Container>
+<App>
+	<EnableHotkey />
+	<EnablePixiExtension />
 
-	<Container x={context.stateLayoutDerived.canvasSizes().width / 2} y={150} anchor={{ x: 0.5, y: 0 }}>
-		<GameBoard {symbols} {isSpinning} />
-	</Container>
 
-	<Container x={context.stateLayoutDerived.canvasSizes().width / 2} y={350} anchor={{ x: 0.5, y: 0 }}>
-		<WinDisplay {currentWin} />
-	</Container>
+	{#if context.stateLayout.showLoadingScreen}
+		<div>Loading</div>
+	{:else}
+		
 
-	<Container x={context.stateLayoutDerived.canvasSizes().width / 2} y={450} anchor={{ x: 0.5, y: 0 }}>
-		<Text
-			text={isSpinning ? "SPINNING..." : "CLICK TO SPIN"}
-			style={{
-				fontFamily: 'Arial',
-				fontSize: REM * 1.2,
-				fill: isSpinning ? 0xffaa00 : 0x00ff00
-			}}
-			anchor={{ x: 0.5, y: 0 }}
-			interactive={!isSpinning}
-			cursor="pointer"
-			onclick={() => {
-				if (!isSpinning) {
-					context.eventEmitter.broadcast({ type: 'gameSpin' });
-				}
-			}}
-		/>
-	</Container>
+		<UI>
+			{#snippet gameName()}
+				<UiGameName name="LINES GAME" />
+			{/snippet}
+			{#snippet logo()}
+				<Text
+					anchor={{ x: 1, y: 0 }}
+					text="ADD YOUR LOGO"
+					style={{
+						fontFamily: 'proxima-nova',
+						fontSize: REM * 1.5,
+						fontWeight: '600',
+						lineHeight: REM * 2,
+						fill: 0xffffff,
+					}}
+				/>
+			{/snippet}
+		</UI>
+		
+	{/if}
 </App>
+
+<Modals>
+	{#snippet version()}
+		<GameVersion version="0.0.0" />
+	{/snippet}
+</Modals>
