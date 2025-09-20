@@ -7,7 +7,7 @@ export type BetModeKey = string;
 
 export const stateBet = $state({
 	currency: 'USD' as Currency,
-	balanceAmount: 0,
+	balanceAmount: 100,
 	betAmount: 1,
 	wageredBetAmount: 1,
 	lastBet: null as LastBet,

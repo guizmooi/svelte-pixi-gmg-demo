@@ -5,12 +5,13 @@
 	import { EnableHotkey } from 'components-shared';
 	import { MainContainer } from 'components-layout';
 	import { App, Text, REM } from 'pixi-svelte';
-	import { stateModal } from 'state-shared';
+	import { stateModal, stateBet } from 'state-shared';
 
 	import { UI, UiGameName } from 'components-ui-pixi';
 	import { GameVersion, Modals } from 'components-ui-html';
 
 	import { getContext } from '../game/context';
+	import { playBet, playBookEvent } from '../game/utils';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import Background from './Background.svelte';
 	import BoardFrame from './BoardFrame.svelte';
@@ -24,6 +25,26 @@
 		buyBonusConfirm: () => {
 			stateModal.modal = { name: 'buyBonusConfirm' };
 		},
+		bet: async () => {
+			// Deduct bet cost from balance
+			const betCost = stateBet.betAmount;
+			if (betCost <= stateBet.balanceAmount) {
+				stateBet.balanceAmount -= betCost;
+
+				// Create a proper reveal book event
+				const revealEvent = {
+					type: 'reveal' as const,
+					index: 0,
+					gameType: 'basegame' as const,
+					board: context.stateGameDerived.boardRaw(),
+					paddingPositions: [],
+					anticipation: []
+				};
+
+				// Call playBookEvent with the reveal event
+				await playBookEvent(revealEvent, { bookEvents: [] });
+			}
+		},
 	});
 </script>
 
@@ -34,7 +55,11 @@
 	<Background />
 
 	{#if context.stateLayout.showLoadingScreen}
-		<LoadingScreen onloaded={() => (context.stateLayout.showLoadingScreen = false)} />
+		<LoadingScreen onloaded={() => {
+			context.stateLayout.showLoadingScreen = false;
+			// Set initial state to idle so BET button is displayed
+			context.stateXstate.value = 'idle';
+		}} />
 	{:else}
 		
 		<MainContainer>
@@ -48,7 +73,7 @@
 
 		<UI>
 			{#snippet gameName()}
-				<UiGameName name="LINES GAME" />
+				<UiGameName name="GMG GAME" />
 			{/snippet}
 			{#snippet logo()}
 				<Text
@@ -63,6 +88,7 @@
 					}}
 				/>
 			{/snippet}
+
 		</UI>
 		
 	{/if}

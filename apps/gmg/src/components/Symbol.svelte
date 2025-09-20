@@ -29,7 +29,7 @@
 		{symbolInfo}
 		x={props.x}
 		y={props.y}
-		showWinFrame={props.state === 'win' && !['S', 'M'].includes(props.rawSymbol.name)}
+		showWinFrame={props.state === 'win' && !['S', 'M'].includes(props.rawSymbol?.name || '')}
 		listener={{
 			complete: props.oncomplete,
 			event: (_, event) => {
@@ -41,7 +41,7 @@
 	/>
 {/if}
 
-{#if props.rawSymbol.multiplier}
+{#if props.rawSymbol?.multiplier}
 	<BitmapText
 		anchor={0.5}
 		x={props.x}

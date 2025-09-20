@@ -5,7 +5,9 @@ import { stateBet } from 'state-shared';
 import { createEnhanceBoard, createReelForSpinning } from 'utils-slots';
 import { createGetWinLevelDataByWinLevelAlias } from 'utils-shared/winLevel';
 
+import type { GameType, RawSymbol, SymbolState } from './types';
 import { stateLayoutDerived } from './stateLayout';
+import { winLevelMap } from './winLevelMap';
 import { eventEmitter } from './eventEmitter';
 import {
 	SYMBOL_SIZE,
@@ -15,9 +17,12 @@ import {
 	SPIN_OPTIONS_DEFAULT,
 	SPIN_OPTIONS_FAST,
 	INITIAL_SYMBOL_STATE,
+	SCATTER_LAND_SOUND_MAP,
 } from './constants';
-import { winLevelMap } from './winLevelMap';
-import type { GameType, RawSymbol, SymbolState } from './types';
+
+const onSymbolLand = ({ rawSymbol }: { rawSymbol: RawSymbol }) => {
+	
+};
 
 const board = _.range(BOARD_DIMENSIONS.x).map((reelIndex) => {
 	const reel = createReelForSpinning({
@@ -32,6 +37,7 @@ const board = _.range(BOARD_DIMENSIONS.x).map((reelIndex) => {
 				forcePlay: !stateBet.isTurbo,
 			});
 		},
+		onSymbolLand,
 	});
 
 	reel.reelState.spinOptions = () =>
@@ -69,7 +75,11 @@ const boardLayout = () => ({
 });
 
 const boardRaw = () =>
-	board.map((reel) => reel.reelState.symbols.map((reelSymbol) => reelSymbol.rawSymbol));
+	board.map((reel) =>
+		reel.reelState.symbols.map((reelSymbol) =>
+			reelSymbol?.rawSymbol || { name: 'L1' }
+		)
+	);
 
 const scatterLandIndex = () => {
 	if (stateGame.scatterCounter > 5) return 5;
@@ -85,6 +95,7 @@ export const { getWinLevelDataByWinLevelAlias } = createGetWinLevelDataByWinLeve
 });
 
 export const stateGameDerived = {
+	onSymbolLand,
 	boardLayout,
 	boardRaw,
 	scatterLandIndex,
