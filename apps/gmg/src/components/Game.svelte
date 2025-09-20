@@ -28,7 +28,7 @@
 	<EnableHotkey />
 	<EnablePixiExtension />
 
-		<Background />
+	<Background />
 
 	{#if context.stateLayout.showLoadingScreen}
 		<LoadingScreen onloaded={() => (context.stateLayout.showLoadingScreen = false)} />

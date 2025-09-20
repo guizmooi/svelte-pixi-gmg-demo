@@ -4,6 +4,8 @@
 	import { MainContainer } from 'components-layout';
 
 	import { getContext } from '../game/context';
+	import PressToContinue from './PressToContinue.svelte';
+	import TransitionAnimation from './TransitionAnimation.svelte';
 	
 	type Props = {
 		onloaded: () => void;
@@ -40,4 +42,14 @@
 			{/if}
 		</Container>
 	</MainContainer>
+</FadeContainer>
+
+<!-- press to continue -->
+<FadeContainer show={loadingType === 'start' && context.stateApp.loaded}>
+	<PressToContinue onpress={() => (loadingType = 'transition')} />
+</FadeContainer>
+
+<!-- transition between the loading screen and the game -->
+<FadeContainer show={loadingType === 'transition'}>
+	<TransitionAnimation oncomplete={props.onloaded} />
 </FadeContainer>
