@@ -17,33 +17,66 @@ import {
 	SPIN_OPTIONS_DEFAULT,
 	SPIN_OPTIONS_FAST,
 	INITIAL_SYMBOL_STATE,
-	SCATTER_LAND_SOUND_MAP,
 } from './constants';
 
 const onSymbolLand = ({ rawSymbol }: { rawSymbol: RawSymbol }) => {
 	
 };
 
-const board = _.range(BOARD_DIMENSIONS.x).map((reelIndex) => {
-	const reel = createReelForSpinning({
-		reelIndex,
-		symbolHeight: SYMBOL_SIZE,
-		initialSymbols: INITIAL_BOARD[reelIndex],
-		initialSymbolState: INITIAL_SYMBOL_STATE,
-		onReelStopping: () => {
-			eventEmitter.broadcast({
-				type: 'soundOnce',
-				name: 'sfx_reel_stop_1',
-				forcePlay: !stateBet.isTurbo,
-			});
-		},
-		onSymbolLand,
-	});
+/**
+ * Original symbol set from INITIAL_BOARD
+ */
+const ALL_SYMBOLS: RawSymbol[] = [
+  { name: 'H1' },
+  { name: 'H2' },
+  { name: 'H3' },
+  { name: 'H4' },
+  { name: 'H5' },
+];
 
-	reel.reelState.spinOptions = () =>
-		reel.reelState.spinType === 'fast' ? SPIN_OPTIONS_FAST : SPIN_OPTIONS_DEFAULT;
+/**
+ * Generate a random board for all reels.
+ */
+function generateRandomBoard(): RawSymbol[][] {
+  return _.range(BOARD_DIMENSIONS.x).map(() =>
+    _.times(5, () => _.sample(ALL_SYMBOLS)!) // 5 symbols per reel
+  );
+}
 
-	return reel;
+/**
+ * Example utility to create a fresh symbol state.
+ * Replace with whatever shape your SymbolState requires.
+ */
+// function createInitialSymbolState(): SymbolState {
+//   return {
+//     isLocked: false,
+//     isHighlighted: false,
+//     // add more defaults as needed
+//   };
+// }
+/**
+ * Create the board with dynamic symbols and states
+ */
+export const board = generateRandomBoard().map((reelSymbols, reelIndex) => {
+  const reel = createReelForSpinning({
+    reelIndex,
+    symbolHeight: SYMBOL_SIZE,
+    initialSymbols: reelSymbols,              // <-- dynamic symbols
+    initialSymbolState: INITIAL_SYMBOL_STATE, // <-- fresh state
+    onReelStopping: () => {
+      eventEmitter.broadcast({
+        type: 'soundOnce',
+        name: 'sfx_reel_stop_1',
+        forcePlay: !stateBet.isTurbo,
+      });
+    },
+    onSymbolLand,
+  });
+
+  reel.reelState.spinOptions = () =>
+    reel.reelState.spinType === 'fast' ? SPIN_OPTIONS_FAST : SPIN_OPTIONS_DEFAULT;
+
+  return reel;
 });
 
 export type Reel = (typeof board)[number];
@@ -77,7 +110,7 @@ const boardLayout = () => ({
 const boardRaw = () =>
 	board.map((reel) =>
 		reel.reelState.symbols.map((reelSymbol) =>
-			reelSymbol?.rawSymbol || { name: 'L1' }
+			reelSymbol?.rawSymbol || { name: 'H1' }
 		)
 	);
 

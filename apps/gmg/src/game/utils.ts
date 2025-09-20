@@ -60,7 +60,7 @@ export const getSymbolInfo = ({
 	state: SymbolState;
 }) => {
 	if (!rawSymbol || !rawSymbol.name) {
-		return SYMBOL_INFO_MAP['L1']['static'];
+		return SYMBOL_INFO_MAP['H1']['static'];
 	}
 	return SYMBOL_INFO_MAP[rawSymbol.name][state];
 };

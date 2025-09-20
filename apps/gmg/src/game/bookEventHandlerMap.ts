@@ -46,12 +46,6 @@ const animateSymbols = async ({ positions }: { positions: Position[] }) => {
 
 export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContext> = {
 	reveal: async (bookEvent: BookEventOfType<'reveal'>, { bookEvents }: BookEventContext) => {
-		const isBonusGame = checkIsMultipleRevealEvents({ bookEvents });
-		if (isBonusGame) {
-			eventEmitter.broadcast({ type: 'stopButtonEnable' });
-			recordBookEvent({ bookEvent });
-		}
-
 		stateGame.gameType = bookEvent.gameType;
 		await stateGameDerived.enhancedBoard.spin({
 			revealEvent: bookEvent,
