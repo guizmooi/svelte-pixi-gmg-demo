@@ -11,6 +11,7 @@
 
 	import { getContext } from '../game/context';
 	import LoadingScreen from './LoadingScreen.svelte';
+	import Background from './Background.svelte';
 
 	const context = getContext();
 
@@ -27,6 +28,7 @@
 	<EnableHotkey />
 	<EnablePixiExtension />
 
+		<Background />
 
 	{#if context.stateLayout.showLoadingScreen}
 		<LoadingScreen onloaded={() => (context.stateLayout.showLoadingScreen = false)} />
