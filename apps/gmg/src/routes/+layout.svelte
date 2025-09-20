@@ -4,6 +4,7 @@
 	import { Authenticate, LoaderStakeEngine, LoaderExample, LoadI18n } from 'components-shared';
 	import Game from '../components/Game.svelte';
 	import { setContext } from '../game/context';
+	import messagesMap from '../i18n/messagesMap';
 
 
 	type Props = { children: Snippet };
@@ -18,9 +19,11 @@
 	setContext();
 </script>
 
-<GlobalStyle>
-	<Game />
-</GlobalStyle>
+<LoadI18n {messagesMap}>
+	<GlobalStyle>
+		<Game />
+	</GlobalStyle>
+</LoadI18n>
 
 <LoaderStakeEngine src={loaderUrlStakeEngine} oncomplete={() => (showYourLoader = true)} />
 

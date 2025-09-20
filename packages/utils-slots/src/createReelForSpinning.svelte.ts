@@ -47,9 +47,6 @@ export function createReelForSpinning<TRawSymbol extends object, TSymbolState ex
 	const updateAllReelSymbolState = (value: SpinningReelSymbolState) => {
 		reelState.symbols.forEach((reelSymbol) => {
 			reelSymbol.symbolState = value as TSymbolState;
-			if (value === 'land') {
-				reelOptions.onSymbolLand({ rawSymbol: reelSymbol.rawSymbol });
-			}
 		});
 	};
 

@@ -3,6 +3,7 @@
 
 	import { EnablePixiExtension } from 'components-pixi';
 	import { EnableHotkey } from 'components-shared';
+	import { MainContainer } from 'components-layout';
 	import { App, Text, REM } from 'pixi-svelte';
 	import { stateModal } from 'state-shared';
 
@@ -12,6 +13,8 @@
 	import { getContext } from '../game/context';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import Background from './Background.svelte';
+	import BoardFrame from './BoardFrame.svelte';
+	import Board from './Board.svelte';
 
 	const context = getContext();
 
@@ -34,6 +37,14 @@
 		<LoadingScreen onloaded={() => (context.stateLayout.showLoadingScreen = false)} />
 	{:else}
 		
+		<MainContainer>
+			<BoardFrame />
+		</MainContainer>
+
+		<MainContainer>
+			<Board />
+			<!-- <Anticipations /> -->
+		</MainContainer>
 
 		<UI>
 			{#snippet gameName()}

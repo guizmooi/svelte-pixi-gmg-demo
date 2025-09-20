@@ -15,27 +15,9 @@ import {
 	SPIN_OPTIONS_DEFAULT,
 	SPIN_OPTIONS_FAST,
 	INITIAL_SYMBOL_STATE,
-	SCATTER_LAND_SOUND_MAP,
 } from './constants';
 import { winLevelMap } from './winLevelMap';
 import type { GameType, RawSymbol, SymbolState } from './types';
-
-const onSymbolLand = ({ rawSymbol }: { rawSymbol: RawSymbol }) => {
-	if (rawSymbol.name === 'S') {
-		eventEmitter.broadcast({ type: 'soundScatterCounterIncrease' });
-		eventEmitter.broadcast({
-			type: 'soundOnce',
-			name: SCATTER_LAND_SOUND_MAP[scatterLandIndex()],
-		});
-	}
-
-	if (rawSymbol.name === 'W') {
-		eventEmitter.broadcast({
-			type: 'soundOnce',
-			name: 'sfx_multiplier_landing',
-		});
-	}
-};
 
 const board = _.range(BOARD_DIMENSIONS.x).map((reelIndex) => {
 	const reel = createReelForSpinning({
@@ -50,7 +32,6 @@ const board = _.range(BOARD_DIMENSIONS.x).map((reelIndex) => {
 				forcePlay: !stateBet.isTurbo,
 			});
 		},
-		onSymbolLand,
 	});
 
 	reel.reelState.spinOptions = () =>
@@ -104,7 +85,6 @@ export const { getWinLevelDataByWinLevelAlias } = createGetWinLevelDataByWinLeve
 });
 
 export const stateGameDerived = {
-	onSymbolLand,
 	boardLayout,
 	boardRaw,
 	scatterLandIndex,
