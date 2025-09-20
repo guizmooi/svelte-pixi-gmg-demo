@@ -12,6 +12,7 @@
 
 	import { getContext } from '../game/context';
 	import { playBet, playBookEvent } from '../game/utils';
+	import base_books from '../stories/data/base_books';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import Background from './Background.svelte';
 	import BoardFrame from './BoardFrame.svelte';
@@ -31,18 +32,13 @@
 			if (betCost <= stateBet.balanceAmount) {
 				stateBet.balanceAmount -= betCost;
 
-				// Create a proper reveal book event
-				const revealEvent = {
-					type: 'reveal' as const,
-					index: 0,
-					gameType: 'basegame' as const,
-					board: context.stateGameDerived.boardRaw(),
-					paddingPositions: [],
-					anticipation: []
-				};
-
-				// Call playBookEvent with the reveal event
-				await playBookEvent(revealEvent, { bookEvents: [] });
+				// Get random book from base_books with NEW board data
+				const randomBook = base_books[Math.floor(Math.random() * base_books.length)];
+				console.log(randomBook);
+				// Play all events from the selected book in sequence
+				for (const event of randomBook.events) {
+					await playBookEvent(event, { bookEvents: randomBook.events });
+				}
 			}
 		},
 	});

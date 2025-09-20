@@ -18,9 +18,9 @@ export const base_books: Book[] = [
 				index: 0,
 				type: 'reveal',
 				board: [
-					[{ name: 'H5' }, { name: 'H4' }, { name: 'H3' }],
-					[{ name: 'H2' }, { name: 'H1' }, { name: 'H5' }],
-					[{ name: 'H4' }, { name: 'H3' }, { name: 'H2' }]
+					[{ name: 'H1' }, { name: 'H2' }, { name: 'H3' }, { name: 'H4' }, { name: 'H5' }],
+					[{ name: 'H2' }, { name: 'H3' }, { name: 'H4' }, { name: 'H5' }, { name: 'H1' }],
+					[{ name: 'H3' }, { name: 'H4' }, { name: 'H5' }, { name: 'H1' }, { name: 'H2' }]
 				],
 				paddingPositions: [],
 				anticipation: [],
@@ -41,9 +41,9 @@ export const base_books: Book[] = [
 				index: 0,
 				type: 'reveal',
 				board: [
-					[{ name: 'H1' }, { name: 'H1' }, { name: 'H1' }],
-					[{ name: 'H2' }, { name: 'H3' }, { name: 'H4' }],
-					[{ name: 'H5' }, { name: 'H2' }, { name: 'H3' }]
+					[{ name: 'H1' }, { name: 'H1' }, { name: 'H1' }, { name: 'H2' }, { name: 'H3' }],
+					[{ name: 'H1' }, { name: 'H1' }, { name: 'H1' }, { name: 'H4' }, { name: 'H5' }],
+					[{ name: 'H1' }, { name: 'H1' }, { name: 'H1' }, { name: 'H2' }, { name: 'H3' }]
 				],
 				paddingPositions: [],
 				anticipation: [],
@@ -64,9 +64,9 @@ export const base_books: Book[] = [
 				index: 0,
 				type: 'reveal',
 				board: [
-					[{ name: 'H2' }, { name: 'H2' }, { name: 'H2' }],
-					[{ name: 'H1' }, { name: 'H3' }, { name: 'H4' }],
-					[{ name: 'H5' }, { name: 'H1' }, { name: 'H3' }]
+					[{ name: 'H2' }, { name: 'H2' }, { name: 'H2' }, { name: 'H1' }, { name: 'H3' }],
+					[{ name: 'H2' }, { name: 'H2' }, { name: 'H2' }, { name: 'H4' }, { name: 'H5' }],
+					[{ name: 'H2' }, { name: 'H2' }, { name: 'H2' }, { name: 'H1' }, { name: 'H3' }]
 				],
 				paddingPositions: [],
 				anticipation: [],
@@ -87,9 +87,9 @@ export const base_books: Book[] = [
 				index: 0,
 				type: 'reveal',
 				board: [
-					[{ name: 'H3' }, { name: 'H3' }, { name: 'H3' }],
-					[{ name: 'H1' }, { name: 'H2' }, { name: 'H4' }],
-					[{ name: 'H5' }, { name: 'H1' }, { name: 'H2' }]
+					[{ name: 'H3' }, { name: 'H3' }, { name: 'H3' }, { name: 'H1' }, { name: 'H2' }],
+					[{ name: 'H3' }, { name: 'H3' }, { name: 'H3' }, { name: 'H4' }, { name: 'H5' }],
+					[{ name: 'H3' }, { name: 'H3' }, { name: 'H3' }, { name: 'H1' }, { name: 'H2' }]
 				],
 				paddingPositions: [],
 				anticipation: [],
@@ -110,9 +110,9 @@ export const base_books: Book[] = [
 				index: 0,
 				type: 'reveal',
 				board: [
-					[{ name: 'H4' }, { name: 'H4' }, { name: 'H4' }],
-					[{ name: 'H1' }, { name: 'H2' }, { name: 'H3' }],
-					[{ name: 'H5' }, { name: 'H1' }, { name: 'H2' }]
+					[{ name: 'H4' }, { name: 'H4' }, { name: 'H4' }, { name: 'H1' }, { name: 'H2' }],
+					[{ name: 'H4' }, { name: 'H4' }, { name: 'H4' }, { name: 'H3' }, { name: 'H5' }],
+					[{ name: 'H4' }, { name: 'H4' }, { name: 'H4' }, { name: 'H1' }, { name: 'H2' }]
 				],
 				paddingPositions: [],
 				anticipation: [],
@@ -133,9 +133,9 @@ export const base_books: Book[] = [
 				index: 0,
 				type: 'reveal',
 				board: [
-					[{ name: 'H5' }, { name: 'H5' }, { name: 'H5' }],
-					[{ name: 'H1' }, { name: 'H2' }, { name: 'H3' }],
-					[{ name: 'H4' }, { name: 'H1' }, { name: 'H2' }]
+					[{ name: 'H5' }, { name: 'H5' }, { name: 'H5' }, { name: 'H1' }, { name: 'H2' }],
+					[{ name: 'H5' }, { name: 'H5' }, { name: 'H5' }, { name: 'H3' }, { name: 'H4' }],
+					[{ name: 'H5' }, { name: 'H5' }, { name: 'H5' }, { name: 'H1' }, { name: 'H2' }]
 				],
 				paddingPositions: [],
 				anticipation: [],
