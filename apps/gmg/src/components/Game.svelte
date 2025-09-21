@@ -12,7 +12,7 @@
 
 	import { getContext } from '../game/context';
 	import { playBet, playBookEvent } from '../game/utils';
-	import base_books from '../stories/data/base_books';
+	import events from '../stories/data/base_events';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import Background from './Background.svelte';
 	import BoardFrame from './BoardFrame.svelte';
@@ -32,12 +32,17 @@
 			if (betCost <= stateBet.balanceAmount) {
 				stateBet.balanceAmount -= betCost;
 
-				// Get random book from base_books with NEW board data
-				const randomBook = base_books[Math.floor(Math.random() * base_books.length)];
-				console.log(randomBook);
-				// Play all events from the selected book in sequence
-				for (const event of randomBook.events) {
-					await playBookEvent(event, { bookEvents: randomBook.events });
+				// Create a sequence of events similar to base_books structure
+				const eventSequence = [
+					{ ...events.reveal, index: 0 },
+					{ ...events.winInfo, index: 1 },
+					{ ...events.setTotalWin, index: 2 },
+					{ ...events.finalWin, index: 3 }
+				] as any[];
+
+				// Play all events in sequence
+				for (const event of eventSequence) {
+					await playBookEvent(event, { bookEvents: eventSequence });
 				}
 			}
 		},

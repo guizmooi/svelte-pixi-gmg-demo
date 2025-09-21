@@ -3,24 +3,24 @@ export default {
 		type: 'reveal',
 		board: [
 			[
+				{ name: 'H1' },
 				{ name: 'H2' },
+				{ name: 'H3' },
+				{ name: 'H4' },
+				{ name: 'H5' },
+			],
+			[
 				{ name: 'H1' },
 				{ name: 'H4' },
+				{ name: 'H2' },
 				{ name: 'H3' },
 				{ name: 'H5' },
 			],
 			[
 				{ name: 'H1' },
+				{ name: 'H3' },
 				{ name: 'H5' },
 				{ name: 'H2' },
-				{ name: 'H4' },
-				{ name: 'H3' },
-			],
-			[
-				{ name: 'H3' },
-				{ name: 'H2' },
-				{ name: 'H5' },
-				{ name: 'H1' },
 				{ name: 'H4' },
 			],
 		],
@@ -89,6 +89,33 @@ export default {
 					lineMultiplier: 1.0,
 				},
 			},
+			{
+				symbol: 'H1',
+				kind: 3,
+				win: 1.0,
+				positions: [
+					{
+						reel: 0,
+						row: 1,
+					},
+					{
+						reel: 1,
+						row: 1,
+					},
+					{
+						reel: 2,
+						row: 1,
+					},
+				],
+				meta: {
+					lineIndex: 1,
+					multiplier: 1,
+					winWithoutMult: 1.0,
+					globalMult: 1,
+					lineMultiplier: 1.0,
+				},
+			},
+			
 		],
 	},
 	setWin: {

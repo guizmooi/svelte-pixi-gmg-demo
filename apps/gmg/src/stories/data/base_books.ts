@@ -49,8 +49,32 @@ export const base_books: Book[] = [
 				anticipation: [],
 				gameType: 'basegame'
 			},
-			{ index: 1, type: 'setTotalWin', amount: 1 },
-			{ index: 2, type: 'finalWin', amount: 1 }
+			{
+				index: 1,
+				type: 'winInfo',
+				totalWin: 1.0,
+				wins: [
+					{
+						symbol: 'H1',
+						kind: 3,
+						win: 1.0,
+						positions: [
+							{ reel: 0, row: 0 },
+							{ reel: 1, row: 0 },
+							{ reel: 2, row: 0 }
+						],
+						meta: {
+							lineIndex: 1,
+							multiplier: 1,
+							winWithoutMult: 1.0,
+							globalMult: 1,
+							lineMultiplier: 1.0
+						}
+					}
+				]
+			},
+			{ index: 2, type: 'setTotalWin', amount: 1 },
+			{ index: 3, type: 'finalWin', amount: 1 }
 		],
 		criteria: '1',
 		baseGameWins: 1.0,
@@ -72,8 +96,32 @@ export const base_books: Book[] = [
 				anticipation: [],
 				gameType: 'basegame'
 			},
-			{ index: 1, type: 'setTotalWin', amount: 0.8 },
-			{ index: 2, type: 'finalWin', amount: 0.8 }
+			{
+				index: 1,
+				type: 'winInfo',
+				totalWin: 0.8,
+				wins: [
+					{
+						symbol: 'H2',
+						kind: 3,
+						win: 0.8,
+						positions: [
+							{ reel: 0, row: 0 },
+							{ reel: 1, row: 0 },
+							{ reel: 2, row: 0 }
+						],
+						meta: {
+							lineIndex: 1,
+							multiplier: 1,
+							winWithoutMult: 0.8,
+							globalMult: 1,
+							lineMultiplier: 1.0
+						}
+					}
+				]
+			},
+			{ index: 2, type: 'setTotalWin', amount: 0.8 },
+			{ index: 3, type: 'finalWin', amount: 0.8 }
 		],
 		criteria: '2',
 		baseGameWins: 0.8,
@@ -95,8 +143,32 @@ export const base_books: Book[] = [
 				anticipation: [],
 				gameType: 'basegame'
 			},
-			{ index: 1, type: 'setTotalWin', amount: 0.6 },
-			{ index: 2, type: 'finalWin', amount: 0.6 }
+			{
+				index: 1,
+				type: 'winInfo',
+				totalWin: 0.6,
+				wins: [
+					{
+						symbol: 'H3',
+						kind: 3,
+						win: 0.6,
+						positions: [
+							{ reel: 0, row: 0 },
+							{ reel: 1, row: 0 },
+							{ reel: 2, row: 0 }
+						],
+						meta: {
+							lineIndex: 1,
+							multiplier: 1,
+							winWithoutMult: 0.6,
+							globalMult: 1,
+							lineMultiplier: 1.0
+						}
+					}
+				]
+			},
+			{ index: 2, type: 'setTotalWin', amount: 0.6 },
+			{ index: 3, type: 'finalWin', amount: 0.6 }
 		],
 		criteria: '3',
 		baseGameWins: 0.6,
@@ -118,8 +190,32 @@ export const base_books: Book[] = [
 				anticipation: [],
 				gameType: 'basegame'
 			},
-			{ index: 1, type: 'setTotalWin', amount: 0.4 },
-			{ index: 2, type: 'finalWin', amount: 0.4 }
+			{
+				index: 1,
+				type: 'winInfo',
+				totalWin: 0.4,
+				wins: [
+					{
+						symbol: 'H4',
+						kind: 3,
+						win: 0.4,
+						positions: [
+							{ reel: 0, row: 0 },
+							{ reel: 1, row: 0 },
+							{ reel: 2, row: 0 }
+						],
+						meta: {
+							lineIndex: 1,
+							multiplier: 1,
+							winWithoutMult: 0.4,
+							globalMult: 1,
+							lineMultiplier: 1.0
+						}
+					}
+				]
+			},
+			{ index: 2, type: 'setTotalWin', amount: 0.4 },
+			{ index: 3, type: 'finalWin', amount: 0.4 }
 		],
 		criteria: '4',
 		baseGameWins: 0.4,
@@ -141,8 +237,32 @@ export const base_books: Book[] = [
 				anticipation: [],
 				gameType: 'basegame'
 			},
-			{ index: 1, type: 'setTotalWin', amount: 0.2 },
-			{ index: 2, type: 'finalWin', amount: 0.2 }
+			{
+				index: 1,
+				type: 'winInfo',
+				totalWin: 0.2,
+				wins: [
+					{
+						symbol: 'H5',
+						kind: 3,
+						win: 0.2,
+						positions: [
+							{ reel: 0, row: 0 },
+							{ reel: 1, row: 0 },
+							{ reel: 2, row: 0 }
+						],
+						meta: {
+							lineIndex: 1,
+							multiplier: 1,
+							winWithoutMult: 0.2,
+							globalMult: 1,
+							lineMultiplier: 1.0
+						}
+					}
+				]
+			},
+			{ index: 2, type: 'setTotalWin', amount: 0.2 },
+			{ index: 3, type: 'finalWin', amount: 0.2 }
 		],
 		criteria: '5',
 		baseGameWins: 0.2,

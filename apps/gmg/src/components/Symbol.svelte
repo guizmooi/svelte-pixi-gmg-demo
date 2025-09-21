@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { SpineProvider, SpineTrack } from 'pixi-svelte';
 	import SymbolSpine from './SymbolSpine.svelte';
 	import SymbolSprite from './SymbolSprite.svelte';
 	import { getSymbolInfo } from '../game/utils';
 	import type { SymbolState, RawSymbol } from '../game/types';
 	import { getContext } from '../game/context';
 	import { BitmapText } from 'pixi-svelte';
+	import { SYMBOL_SIZE } from '../game/constants';
 
 	type Props = {
 		x?: number;
@@ -17,11 +19,16 @@
 
 	const props: Props = $props();
 	const context = getContext();
+
 	const symbolInfo = $derived(getSymbolInfo({ rawSymbol: props.rawSymbol, state: props.state }));
 	const isSprite = $derived(symbolInfo.type === 'sprite');
+	const showWinFrame = $derived(
+		['win', 'postWinStatic', 'explosion'].includes(props.state)	,
+	);
 </script>
 
 {#if isSprite}
+	{@html console.log(isSprite)}
 	<SymbolSprite {symbolInfo} x={props.x} y={props.y} oncomplete={props.oncomplete} />
 {:else}
 	<SymbolSpine
@@ -41,15 +48,9 @@
 	/>
 {/if}
 
-{#if props.rawSymbol?.multiplier}
-	<BitmapText
-		anchor={0.5}
-		x={props.x}
-		y={props.y}
-		text={`${props.rawSymbol.multiplier}X`}
-		style={{
-			fontFamily: 'gold',
-			fontSize: 50,
-		}}
-	/>
+
+{#if showWinFrame}
+	<SpineProvider x={props.x} y={props.y} key="anticipation" width={SYMBOL_SIZE * 0.19}>
+		<SpineTrack trackIndex={0} animationName={'payframe'} loop />
+	</SpineProvider>
 {/if}
