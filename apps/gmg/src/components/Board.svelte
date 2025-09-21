@@ -30,15 +30,20 @@
 		boardShow: () => (show = true),
 		boardHide: () => (show = false),
 		boardWithAnimateSymbols: async ({ symbolPositions }) => {
+			console.log('🎯 GMG Board.svelte received symbolPositions:', symbolPositions);
 			const getPromises = () =>
 				symbolPositions.map(async (position) => {
+					console.log('🎯 GMG Board.svelte animating position:', position);
 					const reelSymbol = context.stateGame.board[position.reel].reelState.symbols[position.row];
+					console.log('🎯 GMG Board.svelte reelSymbol before:', reelSymbol);
 					reelSymbol.symbolState = 'win';
 					await waitForResolve((resolve) => (reelSymbol.oncomplete = resolve));
 					reelSymbol.symbolState = 'postWinStatic';
+					console.log('🎯 GMG Board.svelte reelSymbol after:', reelSymbol);
 				});
 
 			await Promise.all(getPromises());
+			console.log('🎯 GMG Board.svelte animation completed');
 		},
 	});
 

@@ -11,8 +11,8 @@
 	import { GameVersion, Modals } from 'components-ui-html';
 
 	import { getContext } from '../game/context';
-	import { playBet, playBookEvent } from '../game/utils';
-	import events from '../stories/data/base_events';
+	import { playBet } from '../game/utils';
+	import base_books from '../stories/data/base_books';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import Background from './Background.svelte';
 	import BoardFrame from './BoardFrame.svelte';
@@ -32,18 +32,20 @@
 			if (betCost <= stateBet.balanceAmount) {
 				stateBet.balanceAmount -= betCost;
 
-				// Create a sequence of events similar to base_books structure
-				const eventSequence = [
-					{ ...events.reveal, index: 0 },
-					{ ...events.winInfo, index: 1 },
-					{ ...events.setTotalWin, index: 2 },
-					{ ...events.finalWin, index: 3 }
-				] as any[];
+				// Select a random book from base_books
+				const randomBookIndex = Math.floor(Math.random() * base_books.length);
+				const selectedBook = base_books[randomBookIndex];
 
-				// Play all events in sequence
-				for (const event of eventSequence) {
-					await playBookEvent(event, { bookEvents: eventSequence });
-				}
+				console.log('Playing book:', selectedBook.id, 'with payout:', selectedBook.payoutMultiplier);
+
+				// Play the entire book sequence using playBet
+				await playBet({
+					...selectedBook,
+					state: selectedBook.events
+				});
+
+				// Add winnings to balance
+				stateBet.balanceAmount += selectedBook.baseGameWins;
 			}
 		},
 	});
