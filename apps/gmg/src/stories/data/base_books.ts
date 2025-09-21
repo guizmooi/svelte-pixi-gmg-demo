@@ -535,8 +535,8 @@ export default [
 						win: 1.0,
 						positions: [
 							{ reel: 0, row: 0 },
-							{ reel: 1, row: 0 },
-							{ reel: 2, row: 0 }
+							{ reel: 0, row: 1 },
+							{ reel: 0, row: 2 }
 						],
 						meta: { paylineId: '1', matchedCount: 3, winWithoutMult: 1.0, lineWin: 1.0, paylineType: 'top_row' }
 					},
