@@ -53,24 +53,12 @@
 			{@render props.buttonBuyBonus({ anchor: 0.5 })}
 		</Container>
 
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={-10 + 180 * 4}>
-			{@render props.buttonAutoSpin({ anchor: 0.5 })}
-		</Container>
-
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={-10 + 180 * 5}>
-			{@render props.buttonBet({ anchor: 0.5 })}
-		</Container>
-
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={-10 + 180 * 6}>
+		<Container y={DESKTOP_BASE_SIZE * 0.5} x={1560}>
 			{@render props.buttonTurbo({ anchor: 0.5 })}
 		</Container>
 
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={1560}>
-			{@render props.buttonDecrease({ anchor: 0.5 })}
-		</Container>
-
 		<Container y={DESKTOP_BASE_SIZE * 0.5} x={1560 + 180}>
-			{@render props.buttonIncrease({ anchor: 0.5 })}
+			{@render props.buttonBet({ anchor: 0.5 })}
 		</Container>
 
 		{#if stateUi.freeSpinCounterShow}

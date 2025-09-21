@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { Text } from 'pixi-svelte';
+	import { Text, Graphics } from 'pixi-svelte';
 	import { Button, type ButtonProps } from 'components-pixi';
 	import { stateModal, stateBet, stateBetDerived } from 'state-shared';
+	import * as PIXI from 'pixi.js';
 
 	import UiSprite from './UiSprite.svelte';
 	import { UI_BASE_FONT_SIZE, UI_BASE_SIZE } from '../constants';
@@ -10,7 +11,7 @@
 
 	const props: Partial<Omit<ButtonProps, 'children'>> = $props();
 	const { stateXstateDerived, eventEmitter } = getContext();
-	const sizes = { width: UI_BASE_SIZE, height: UI_BASE_SIZE };
+	const sizes = { width: UI_BASE_SIZE * 1.5, height: UI_BASE_SIZE };
 	const disabled = $derived(!stateXstateDerived.isIdle());
 	const active = $derived(stateBetDerived.activeBetMode()?.type === 'activate');
 
@@ -38,6 +39,25 @@
 		if (value.active) return 'active' as const;
 		return 'default' as const;
 	};
+
+	// Create gradient background function from UiLabel
+	const drawGradientBackground = (graphics: PIXI.Graphics, width: number, height: number, borderRadius: number) => {
+		// Create linear gradient from top to bottom
+		const gradient = new PIXI.FillGradient(0, 0, 0, height);
+		gradient.addColorStop(0, '#0000003d'); // Top color with transparency
+		gradient.addColorStop(1, '#00000029'); // Bottom color with transparency
+
+		graphics.roundRect(0, 0, width, height, borderRadius);
+		graphics.fill(gradient);
+
+		// Add solid border effect
+		graphics.roundRect(0, 0, width, height, borderRadius);
+		graphics.stroke({
+			color: 0x909090,
+			width: 3,
+			alpha: 1,
+		});
+	};
 </script>
 
 <Button {...props} {sizes} {disabled} {onpress}>
@@ -49,23 +69,15 @@
 			pressed,
 		})}
 
-		<UiSprite
-			key="buyBonus"
-			{...center}
-			anchor={0.5}
-			width={sizes.width}
-			height={sizes.height}
-			{...disabled
-				? {
-						backgroundColor: 0xaaaaaa,
-					}
-				: {}}
-			{...active
-				? {
-						borderWidth: 10,
-						borderColor: 0xffffff,
-					}
-				: {}}
+		<Graphics
+			x={center.x - sizes.width / 2}
+			y={center.y - sizes.height / 2}
+			draw={(graphics) => drawGradientBackground(
+				graphics,
+				sizes.width,
+				sizes.height,
+				35
+			)}
 		/>
 
 		<Text
@@ -77,9 +89,17 @@
 				wordWrap: true,
 				wordWrapWidth: 200,
 				fontFamily: 'proxima-nova',
-				fontWeight: '600',
+				fontWeight: 'bold',
 				fontSize: UI_BASE_FONT_SIZE * 0.9,
-				fill: 0xffffff,
+				fill: 0xFFFFFF,
+				dropShadow: {
+					blur: 2,
+					quality: 3,
+					distance: 1,
+					angle: Math.PI / 4,
+					color: 0x000000,
+					alpha: 0.3,
+				},
 			}}
 		/>
 	{/snippet}

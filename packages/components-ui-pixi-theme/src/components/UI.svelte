@@ -18,9 +18,6 @@
 	import ButtonBuyBonus from './ButtonBuyBonus.svelte';
 	import ButtonBet from './ButtonBet.svelte';
 	import ButtonTurbo from './ButtonTurbo.svelte';
-	import ButtonAutoSpin from './ButtonAutoSpin.svelte';
-	import ButtonIncrease from './ButtonIncrease.svelte';
-	import ButtonDecrease from './ButtonDecrease.svelte';
 	import ButtonMenu from './ButtonMenu.svelte';
 	import ButtonMenuClose from './ButtonMenuClose.svelte';
 	import ButtonSoundSwitch from './ButtonSoundSwitch.svelte';
@@ -80,17 +77,6 @@
 			<ButtonTurbo {...buttonProps} />
 		{/snippet}
 
-		{#snippet buttonAutoSpin(buttonProps)}
-			<ButtonAutoSpin {...buttonProps} />
-		{/snippet}
-
-		{#snippet buttonIncrease(buttonProps)}
-			<ButtonIncrease {...buttonProps} />
-		{/snippet}
-
-		{#snippet buttonDecrease(buttonProps)}
-			<ButtonDecrease {...buttonProps} />
-		{/snippet}
 
 		{#snippet buttonMenu(buttonProps)}
 			<ButtonMenu {...buttonProps} />

@@ -91,26 +91,6 @@
 			{@render props.buttonBuyBonus({ anchor: 0.5 })}
 		</Container>
 
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonBet({ anchor: 0.5 })}
-		</Container>
-
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 180}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonAutoSpin({ anchor: 0.5 })}
-		</Container>
-
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 + 180}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonTurbo({ anchor: 0.5 })}
-		</Container>
 
 		<Container
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5}
@@ -150,14 +130,14 @@
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 390}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - 85}
 		>
-			{@render props.buttonDecrease({ anchor: 0.5 })}
+			{@render props.buttonTurbo({ anchor: 0.5 })}
 		</Container>
 
 		<Container
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 + 390}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - 85}
 		>
-			{@render props.buttonIncrease({ anchor: 0.5 })}
+			{@render props.buttonBet({ anchor: 0.5 })}
 		</Container>
 	{/if}
 
