@@ -39,7 +39,7 @@ const ALL_SYMBOLS: RawSymbol[] = [
  */
 function generateRandomBoard(): RawSymbol[][] {
   return _.range(BOARD_DIMENSIONS.x).map(() =>
-    _.times(5, () => _.sample(ALL_SYMBOLS)!) // 5 symbols per reel
+    _.times(BOARD_DIMENSIONS.y, () => _.sample(ALL_SYMBOLS)!) // 3 symbols per reel for 3x3 grid
   );
 }
 

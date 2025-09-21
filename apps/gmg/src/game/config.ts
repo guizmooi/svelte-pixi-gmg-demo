@@ -29,11 +29,11 @@ export default {
 		'5': [2, 1, 0], // Diagonal bottom-left to top-right
 	},
 	symbols: {
-		H1: { paytable: [{ '3': 1 }] },
-		H2: { paytable: [{ '3': 0.8 }] },
-		H3: { paytable: [{ '3': 0.6 }] },
-		H4: { paytable: [{ '3': 0.4 }] },
-		H5: { paytable: [{ '3': 0.2 }] },
+		H1: { paytable: { '3': 1 } },
+		H2: { paytable: { '3': 0.8 } },
+		H3: { paytable: { '3': 0.6 } },
+		H4: { paytable: { '3': 0.4 } },
+		H5: { paytable: { '3': 0.2 } },
 	},
 	paddingReels: {
 		basegame: [

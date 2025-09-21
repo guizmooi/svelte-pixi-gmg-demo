@@ -5,32 +5,26 @@ export const SYMBOL_SIZE = 120;
 
 export const REEL_PADDING = 0.53;
 
-// initial board (3 reels × 3 rows → 3 visible rows + 2 padding)
+// initial board (3 reels × 3 rows )
 export const INITIAL_BOARD: RawSymbol[][] = [
 	[
 		{ name: 'H2' },
 		{ name: 'H1' },
 		{ name: 'H4' },
-		{ name: 'H3' },
-		{ name: 'H5' },
 	],
 	[
 		{ name: 'H3' },
 		{ name: 'H5' },
 		{ name: 'H2' },
-		{ name: 'H1' },
-		{ name: 'H4' },
 	],
 	[
 		{ name: 'H4' },
 		{ name: 'H2' },
 		{ name: 'H5' },
-		{ name: 'H3' },
-		{ name: 'H1' },
 	],
 ];
 
-export const BOARD_DIMENSIONS = { x: INITIAL_BOARD.length, y: INITIAL_BOARD[0].length - 2 };
+export const BOARD_DIMENSIONS = { x: INITIAL_BOARD.length, y: INITIAL_BOARD[0].length };
 
 export const BOARD_SIZES = {
 	width: SYMBOL_SIZE * BOARD_DIMENSIONS.x,
