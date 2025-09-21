@@ -7,7 +7,7 @@
 	import { App, Text, REM } from 'pixi-svelte';
 	import { stateModal, stateBet } from 'state-shared';
 
-	import { UI, UiGameName } from 'components-ui-pixi';
+	import { UI, UiGameName } from 'components-ui-pixi-theme';
 	import { GameVersion, Modals } from 'components-ui-html';
 
 	import { getContext } from '../game/context';

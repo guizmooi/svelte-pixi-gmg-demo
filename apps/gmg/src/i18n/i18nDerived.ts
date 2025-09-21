@@ -1,6 +1,6 @@
 import { stateI18nDerived } from 'state-shared';
 
-import { i18nDerived as i18nDerivedUiPixi } from 'components-ui-pixi';
+import { i18nDerived as i18nDerivedUiPixi } from 'components-ui-pixi-theme';
 import { i18nDerived as i18nDerivedUiHtml } from 'components-ui-html';
 
 export const i18nDerived = {
