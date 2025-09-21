@@ -17,6 +17,8 @@
 	import Background from './Background.svelte';
 	import BoardFrame from './BoardFrame.svelte';
 	import Board from './Board.svelte';
+	import Anticipations from './Anticipations.svelte';
+import Win from './Win.svelte';
 
 	const context = getContext();
 
@@ -69,7 +71,7 @@
 
 		<MainContainer>
 			<Board />
-			<!-- <Anticipations /> -->
+			<Anticipations />
 		</MainContainer>
 
 		<UI>
@@ -91,6 +93,12 @@
 			{/snippet}
 
 		</UI>
+		<Win />
+		<!-- <FreeSpinIntro />
+		{#if ['desktop', 'landscape'].includes(context.stateLayoutDerived.layoutType())}
+			<FreeSpinCounter />
+		{/if}
+		<FreeSpinOutro /> -->
 		
 	{/if}
 </App>

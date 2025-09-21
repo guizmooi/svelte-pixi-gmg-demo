@@ -40,8 +40,9 @@ export default [
 					}
 				]
 			},
-			{ index: 2, type: "setTotalWin", amount: 1.0 },
-			{ index: 3, type: "finalWin", amount: 1.0 }
+			{ index: 2, type: 'setWin', amount: 1, winLevel: 1 },
+			{ index: 3, type: 'setTotalWin', amount: 1 },
+			{ index: 4, type: 'finalWin', amount: 1 },
 		],
 		criteria: "basegame",
 		baseGameWins: 1.0,
@@ -89,8 +90,9 @@ export default [
 					}
 				]
 			},
-			{ index: 2, type: 'setTotalWin', amount: 1.0 },
-			{ index: 3, type: 'finalWin', amount: 1.0 }
+			{ index: 2, type: 'setWin', amount: 10, winLevel: 1 },
+			{ index: 3, type: 'setTotalWin', amount: 10 },
+			{ index: 4, type: 'finalWin', amount: 10 },
 		],
 		criteria: 'basegame',
 		baseGameWins: 1.0,
@@ -100,7 +102,7 @@ export default [
 	// Middle row H2×3 win (payline 2)
 	{
 		id: 3,
-		payoutMultiplier: 0.8,
+		payoutMultiplier: 1,
 		events: [
 			{
 				index: 0,
@@ -117,12 +119,12 @@ export default [
 			{
 				index: 1,
 				type: 'winInfo',
-				totalWin: 0.8,
+				totalWin: 1,
 				wins: [
 					{
 						symbol: 'H2',
 						kind: 3,
-						win: 0.8,
+						win: 1,
 						positions: [
 							{ reel: 0, row: 1 },
 							{ reel: 1, row: 1 },
@@ -131,18 +133,19 @@ export default [
 						meta: {
 							paylineId: '2',
 							matchedCount: 3,
-							winWithoutMult: 0.8,
-							lineWin: 0.8,
+							winWithoutMult: 1,
+							lineWin: 1,
 							paylineType: 'middle_row'
 						}
 					}
 				]
 			},
-			{ index: 2, type: 'setTotalWin', amount: 0.8 },
-			{ index: 3, type: 'finalWin', amount: 0.8 }
+			{ index: 2, type: 'setWin', amount: 1, winLevel: 1 },
+			{ index: 3, type: 'setTotalWin', amount: 1 },
+			{ index: 4, type: 'finalWin', amount: 1 },
 		],
 		criteria: 'basegame',
-		baseGameWins: 0.8,
+		baseGameWins: 1,
 		freeGameWins: 0.0
 	},
 
@@ -187,8 +190,9 @@ export default [
 					}
 				]
 			},
-			{ index: 2, type: 'setTotalWin', amount: 0.6 },
-			{ index: 3, type: 'finalWin', amount: 0.6 }
+			{ index: 2, type: 'setWin', amount: 10, winLevel: 1 },
+			{ index: 3, type: 'setTotalWin', amount: 10 },
+			{ index: 4, type: 'finalWin', amount: 10 },
 		],
 		criteria: 'basegame',
 		baseGameWins: 0.6,
@@ -236,8 +240,9 @@ export default [
 					}
 				]
 			},
-			{ index: 2, type: 'setTotalWin', amount: 0.4 },
-			{ index: 3, type: 'finalWin', amount: 0.4 }
+			{ index: 2, type: 'setWin', amount: 10, winLevel: 1 },
+			{ index: 3, type: 'setTotalWin', amount: 10 },
+			{ index: 4, type: 'finalWin', amount: 10 },
 		],
 		criteria: 'basegame',
 		baseGameWins: 0.4,
@@ -285,8 +290,10 @@ export default [
 					}
 				]
 			},
-			{ index: 2, type: 'setTotalWin', amount: 0.2 },
-			{ index: 3, type: 'finalWin', amount: 0.2 }
+			
+			{ index: 2, type: 'setWin', amount: 10, winLevel: 1 },
+			{ index: 3, type: 'setTotalWin', amount: 10 },
+			{ index: 4, type: 'finalWin', amount: 10 },
 		],
 		criteria: 'basegame',
 		baseGameWins: 0.2,
@@ -351,8 +358,9 @@ export default [
 					}
 				]
 			},
-			{ index: 2, type: 'setTotalWin', amount: 1.8 },
-			{ index: 3, type: 'finalWin', amount: 1.8 }
+			{ index: 2, type: 'setWin', amount: 1.8, winLevel: 2 },
+			{ index: 3, type: 'setTotalWin', amount: 1.8 },
+			{ index: 4, type: 'finalWin', amount: 1.8 },
 		],
 		criteria: 'basegame',
 		baseGameWins: 1.8,
@@ -498,4 +506,72 @@ export default [
     baseGameWins: 0.0,
     freeGameWins: 0.0
   },
+	// Multiple paylines - Top row H1×3 + Middle row H2×3
+	{
+		id: 14,
+		payoutMultiplier: 1.8,
+		events: [
+			{
+				index: 0,
+				type: 'reveal',
+				board: [
+					[{ name: 'H1' }, { name: 'H1' }, { name: 'H1' }],
+					[{ name: 'H3' }, { name: 'H1' }, { name: 'H4' }],
+					[{ name: 'H1' }, { name: 'H3' }, { name: 'H1' }]
+				],
+				paddingPositions: [216, 205],
+				gameType: 'basegame',
+				anticipation: [0, 0, 0]
+			},
+			{
+				index: 1,
+				type: 'winInfo',
+				totalWin: 3.0,  // sum of all 3 wins
+				wins: [
+					// Top row H1x3
+					{
+						symbol: 'H1',
+						kind: 3,
+						win: 1.0,
+						positions: [
+							{ reel: 0, row: 0 },
+							{ reel: 1, row: 0 },
+							{ reel: 2, row: 0 }
+						],
+						meta: { paylineId: '1', matchedCount: 3, winWithoutMult: 1.0, lineWin: 1.0, paylineType: 'top_row' }
+					},
+					// Diagonal TL->BR H1x3
+					{
+						symbol: 'H1',
+						kind: 3,
+						win: 1.0,
+						positions: [
+							{ reel: 0, row: 0 },
+							{ reel: 1, row: 1 },
+							{ reel: 2, row: 2 }
+						],
+						meta: { paylineId: 'diag_tl_br', matchedCount: 3, winWithoutMult: 1.0, lineWin: 1.0, paylineType: 'diagonal_tl_br' }
+					},
+					// Diagonal BL->TR H1x3
+					{
+						symbol: 'H1',
+						kind: 3,
+						win: 1.0,
+						positions: [
+							{ reel: 0, row: 2 },
+							{ reel: 1, row: 1 },
+							{ reel: 2, row: 0 }
+						],
+						meta: { paylineId: 'diag_bl_tr', matchedCount: 3, winWithoutMult: 1.0, lineWin: 1.0, paylineType: 'diagonal_bl_tr' }
+					}
+				]
+			},
+			{ index: 2, type: 'setWin', amount: 3.0, winLevel: 2 },
+			{ index: 3, type: 'setTotalWin', amount: 3.0 },
+			{ index: 4, type: 'finalWin', amount: 3.0 }
+		],
+		criteria: 'basegame',
+		baseGameWins: 3.0,
+		freeGameWins: 0.0
+	}
 ];
