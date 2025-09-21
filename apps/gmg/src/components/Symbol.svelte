@@ -28,7 +28,6 @@
 </script>
 
 {#if isSprite}
-	{@html console.log(isSprite)}
 	<SymbolSprite {symbolInfo} x={props.x} y={props.y} oncomplete={props.oncomplete} />
 {:else}
 	<SymbolSpine

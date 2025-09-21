@@ -2,25 +2,49 @@ export default [
 	// No-win book - No paylines match
 	{
 		id: 1,
-		payoutMultiplier: 0.0,
+		payoutMultiplier: 1.0,
 		events: [
 			{
 				index: 0,
 				type: 'reveal',
 				board: [
-					[{ name: 'H1' }, { name: 'H2' }, { name: 'H3' }],
-					[{ name: 'H2' }, { name: 'H3' }, { name: 'H4' }],
-					[{ name: 'H3' }, { name: 'H4' }, { name: 'H5' }]
+					[{ "name": "H1" }, { "name": "H2" }, { "name": "H3" }],
+					[{ "name": "H2" }, { "name": "H3" }, { "name": "H4" }],
+					[{ "name": "H3" }, { "name": "H4" }, { "name": "H5" }]
 				],
 				paddingPositions: [216, 205],
-				gameType: 'basegame',
+				gameType: "basegame",
 				anticipation: [0, 0, 0]
 			},
-			{ index: 1, type: 'setTotalWin', amount: 0 },
-			{ index: 2, type: 'finalWin', amount: 0 }
+			{
+				index: 1,
+				type: "winInfo",
+				totalWin: 1.0,
+				wins: [
+					{
+						symbol: "H3",
+						kind: 3,
+						win: 1.0,
+						positions: [
+							{ reel: 0, row: 2 },
+							{ reel: 1, row: 1 },
+							{ reel: 2, row: 0 }
+						],
+						meta: {
+							paylineId: "diag_bl_tr",
+							matchedCount: 3,
+							winWithoutMult: 1.0,
+							lineWin: 1.0,
+							paylineType: "diagonal"
+						}
+					}
+				]
+			},
+			{ index: 2, type: "setTotalWin", amount: 1.0 },
+			{ index: 3, type: "finalWin", amount: 1.0 }
 		],
-		criteria: '0',
-		baseGameWins: 0.0,
+		criteria: "basegame",
+		baseGameWins: 1.0,
 		freeGameWins: 0.0
 	},
 
