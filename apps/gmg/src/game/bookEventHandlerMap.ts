@@ -37,13 +37,11 @@ const winLevelSoundsStop = () => {
 };
 
 const animateSymbols = async ({ positions }: { positions: Position[] }) => {
-	console.log('🎯 GMG animateSymbols called with positions:', positions);
 	eventEmitter.broadcast({ type: 'boardShow' });
 	await eventEmitter.broadcastAsync({
 		type: 'boardWithAnimateSymbols',
 		symbolPositions: positions,
 	});
-	console.log('🎯 GMG animateSymbols completed');
 };
 
 export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContext> = {
@@ -56,10 +54,8 @@ export const bookEventHandlerMap: BookEventHandlerMap<BookEvent, BookEventContex
 		eventEmitter.broadcast({ type: 'soundScatterCounterClear' });
 	},
 	winInfo: async (bookEvent: BookEventOfType<'winInfo'>) => {
-		console.log('🎯 GMG winInfo triggered:', bookEvent);
 		eventEmitter.broadcast({ type: 'soundOnce', name: 'sfx_winlevel_small' });
 		await sequence(bookEvent.wins, async (win) => {
-			console.log('🎯 GMG animating win:', win);
 			await animateSymbols({ positions: win.positions });
 		});
 	},

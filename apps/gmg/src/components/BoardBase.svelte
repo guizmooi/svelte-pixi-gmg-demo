@@ -3,7 +3,6 @@
 	import { getContext } from '../game/context';
 
 	const context = getContext();
-	console.log(context.stateGame.board)
 </script>
 
 {#each context.stateGame.board as reel, reelIndex (reelIndex)}

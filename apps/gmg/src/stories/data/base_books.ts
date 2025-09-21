@@ -357,5 +357,145 @@ export default [
 		criteria: 'basegame',
 		baseGameWins: 1.8,
 		freeGameWins: 0.0
-	}
+	},
+
+	{
+		id: 8,
+		payoutMultiplier: 0.0,
+		events: [
+			{
+				index: 0,
+				type: "reveal",
+				board: [
+					[{ name: "H1" }, { name: "H2" }, { name: "H3" }],
+					[{ name: "H4" }, { name: "H5" }, { name: "H1" }],
+					[{ name: "H2" }, { name: "H3" }, { name: "H4" }]
+				],
+				paddingPositions: [216, 205],
+				gameType: "basegame",
+				anticipation: [0, 0, 0]
+			},
+			{ index: 1, type: "setTotalWin", amount: 0.0 },
+			{ index: 2, type: "finalWin", amount: 0.0 }
+		],
+		criteria: "basegame",
+		baseGameWins: 0.0,
+		freeGameWins: 0.0
+	},
+
+	 {
+    id: 9,
+    payoutMultiplier: 0.0,
+    events: [
+      {
+        index: 0,
+        type: "reveal",
+        board: [
+          [{ name: "H1" }, { name: "H2" }, { name: "H3" }],
+          [{ name: "H4" }, { name: "H5" }, { name: "H1" }],
+          [{ name: "H2" }, { name: "H3" }, { name: "H4" }]
+        ],
+        paddingPositions: [216, 205],
+        gameType: "basegame",
+        anticipation: [0, 0, 0]
+      },
+      { index: 1, type: "setTotalWin", amount: 0.0 },
+      { index: 2, type: "finalWin", amount: 0.0 }
+    ],
+    criteria: "basegame",
+    baseGameWins: 0.0,
+    freeGameWins: 0.0
+  },
+  {
+    id: 10,
+    payoutMultiplier: 0.0,
+    events: [
+      {
+        index: 0,
+        type: "reveal",
+        board: [
+          [{ name: "H2" }, { name: "H3" }, { name: "H4" }],
+          [{ name: "H5" }, { name: "H1" }, { name: "H2" }],
+          [{ name: "H3" }, { name: "H4" }, { name: "H5" }]
+        ],
+        paddingPositions: [216, 205],
+        gameType: "basegame",
+        anticipation: [0, 0, 0]
+      },
+      { index: 1, type: "setTotalWin", amount: 0.0 },
+      { index: 2, type: "finalWin", amount: 0.0 }
+    ],
+    criteria: "basegame",
+    baseGameWins: 0.0,
+    freeGameWins: 0.0
+  },
+  {
+    id: 11,
+    payoutMultiplier: 0.0,
+    events: [
+      {
+        index: 0,
+        type: "reveal",
+        board: [
+          [{ name: "H3" }, { name: "H4" }, { name: "H5" }],
+          [{ name: "H1" }, { name: "H2" }, { name: "H3" }],
+          [{ name: "H4" }, { name: "H5" }, { name: "H1" }]
+        ],
+        paddingPositions: [216, 205],
+        gameType: "basegame",
+        anticipation: [0, 0, 0]
+      },
+      { index: 1, type: "setTotalWin", amount: 0.0 },
+      { index: 2, type: "finalWin", amount: 0.0 }
+    ],
+    criteria: "basegame",
+    baseGameWins: 0.0,
+    freeGameWins: 0.0
+  },
+  {
+    id: 12,
+    payoutMultiplier: 0.0,
+    events: [
+      {
+        index: 0,
+        type: "reveal",
+        board: [
+          [{ name: "H4" }, { name: "H5" }, { name: "H1" }],
+          [{ name: "H2" }, { name: "H3" }, { name: "H4" }],
+          [{ name: "H5" }, { name: "H1" }, { name: "H2" }]
+        ],
+        paddingPositions: [216, 205],
+        gameType: "basegame",
+        anticipation: [0, 0, 0]
+      },
+      { index: 1, type: "setTotalWin", amount: 0.0 },
+      { index: 2, type: "finalWin", amount: 0.0 }
+    ],
+    criteria: "basegame",
+    baseGameWins: 0.0,
+    freeGameWins: 0.0
+  },
+  {
+    id: 13,
+    payoutMultiplier: 0.0,
+    events: [
+      {
+        index: 0,
+        type: "reveal",
+        board: [
+          [{ name: "H5" }, { name: "H1" }, { name: "H2" }],
+          [{ name: "H3" }, { name: "H4" }, { name: "H5" }],
+          [{ name: "H1" }, { name: "H2" }, { name: "H3" }]
+        ],
+        paddingPositions: [216, 205],
+        gameType: "basegame",
+        anticipation: [0, 0, 0]
+      },
+      { index: 1, type: "setTotalWin", amount: 0.0 },
+      { index: 2, type: "finalWin", amount: 0.0 }
+    ],
+    criteria: "basegame",
+    baseGameWins: 0.0,
+    freeGameWins: 0.0
+  },
 ];

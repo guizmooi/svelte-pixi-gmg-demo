@@ -36,8 +36,6 @@
 				const randomBookIndex = Math.floor(Math.random() * base_books.length);
 				const selectedBook = base_books[randomBookIndex];
 
-				console.log('Playing book:', selectedBook.id, 'with payout:', selectedBook.payoutMultiplier);
-
 				// Play the entire book sequence using playBet
 				await playBet({
 					...selectedBook,
