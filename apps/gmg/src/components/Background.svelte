@@ -94,11 +94,11 @@
 			const timeSinceStart = animationTime - lastSharkTime;
 			const progress = Math.min(timeSinceStart / SHARK_CONFIG.ANIMATION_CYCLE, 1);
 
-			// Movement path: left top to right bottom
+			// Movement path: middle left to bottom right
 			const startX = -SHARK_CONFIG.SIZE * 0.5; // Start slightly off-screen left
 			const endX = canvasWidth + SHARK_CONFIG.SIZE * 0.5; // End slightly off-screen right
-			const startY = canvasHeight * 0.15; // Start at top
-			const endY = canvasHeight * 0.85; // End at bottom
+			const startY = canvasHeight * 0.5; // Start at middle
+			const endY = canvasHeight * 0.9; // End at bottom
 
 			// Smooth easing for natural movement
 			const easedProgress = 0.5 * (1 - Math.cos(progress * Math.PI));
