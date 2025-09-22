@@ -70,8 +70,10 @@
 				if (preAssetNameList.length > 0) {
 					const preLoadedAssets = await loadAssets(preAssetNameList);
 					if (preLoadedAssets) context.stateApp.loadedAssets = preLoadedAssets;
+					preLoaded = true;
+				} else {
+					preLoaded = true;
 				}
-				preLoaded = true;
 			})();
 		}
 	});

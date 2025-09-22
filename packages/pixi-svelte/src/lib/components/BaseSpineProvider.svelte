@@ -16,6 +16,11 @@
 
 	const props: Props = $props();
 	const parentContext = getContextParent();
+
+	if (!props.spineData) {
+		throw new Error('BaseSpineProvider: spineData is required but was undefined');
+	}
+
 	const spine = new SPINE_PIXI.Spine(props.spineData);
 
 	propsSyncEffect({ props, target: spine, ignore: ['children'] });

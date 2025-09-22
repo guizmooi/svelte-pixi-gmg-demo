@@ -218,4 +218,9 @@ export default {
 		src: new URL('../../assets/audio/sounds.json', import.meta.url).href,
 		preload: true,
 	},
+	mechanical_shark: {
+		type: 'sprite',
+		src: new URL('../../assets/sprites/background/mechanical_shark.png', import.meta.url).href,
+		preload: true,
+	},
 } as const;
