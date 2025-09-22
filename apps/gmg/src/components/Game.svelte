@@ -87,26 +87,11 @@ import Win from './Win.svelte';
 				<UiGameName name="GMG GAME" />
 			{/snippet}
 			{#snippet logo()}
-				<Text
-					anchor={{ x: 1, y: 0 }}
-					text="ADD YOUR LOGO"
-					style={{
-						fontFamily: 'proxima-nova',
-						fontSize: REM * 1.5,
-						fontWeight: '600',
-						lineHeight: REM * 2,
-						fill: 0xffffff,
-					}}
-				/>
+				<Text/>
 			{/snippet}
 
 		</UI>
 		<Win />
-		<!-- <FreeSpinIntro />
-		{#if ['desktop', 'landscape'].includes(context.stateLayoutDerived.layoutType())}
-			<FreeSpinCounter />
-		{/if}
-		<FreeSpinOutro /> -->
 		
 	{/if}
 </App>
