@@ -1,19 +1,36 @@
+<!--
+	@component Game
+
+	Main game component that orchestrates all game functionality including:
+	- Loading screen management
+	- Game event handling (bets, bonuses)
+	- Balance management
+	- Game state coordination
+	- UI rendering and layout
+
+	This component serves as the root container for the entire game experience.
+-->
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	// ===== CORE DEPENDENCIES =====
 	import { EnablePixiExtension } from 'components-pixi';
 	import { EnableHotkey } from 'components-shared';
 	import { MainContainer } from 'components-layout';
-	import { App, Text, REM } from 'pixi-svelte';
+	import { App, Text } from 'pixi-svelte';
 	import { stateModal, stateBet } from 'state-shared';
 	import { bookEventAmountToNormalisedAmount } from 'utils-shared/amount';
 
+	// ===== UI COMPONENTS =====
 	import { UI, UiGameName } from 'components-ui-pixi-theme';
 	import { GameVersion, Modals } from 'components-ui-html';
 
+	// ===== GAME MODULES =====
 	import { getContext } from '../game/context';
 	import { playBet } from '../game/utils';
 	import base_books from '../stories/data/base_books';
+
+	// ===== GAME COMPONENTS =====
 	import EnableSound from './EnableSound.svelte';
 	import Sound from './Sound.svelte';
 	import LoadingScreen from './LoadingScreen.svelte';
@@ -21,39 +38,67 @@
 	import BoardFrame from './BoardFrame.svelte';
 	import Board from './Board.svelte';
 	import Anticipations from './Anticipations.svelte';
-import Win from './Win.svelte';
+	import Win from './Win.svelte';
 
+	// ===== GAME CONTEXT =====
 	const context = getContext();
 
-	onMount(() => (context.stateLayout.showLoadingScreen = true));
+	// Initialize loading screen on mount
+	onMount(() => {
+		context.stateLayout.showLoadingScreen = true;
+	});
 
+	// ===== EVENT HANDLERS =====
+	/**
+	 * Handle bet confirmation modal display
+	 */
+	const handleBuyBonusConfirm = () => {
+		stateModal.modal = { name: 'buyBonusConfirm' };
+	};
+
+	/**
+	 * Handle bet placement and game logic
+	 * Manages balance deduction, book selection, and win processing
+	 */
+	const handleBet = async () => {
+		const betCost = stateBet.betAmount;
+
+		// Validate sufficient balance
+		if (betCost > stateBet.balanceAmount) {
+			return; // Insufficient funds
+		}
+
+		try {
+			// Deduct bet cost and set wagered amount
+			stateBet.wageredBetAmount = betCost;
+			stateBet.balanceAmount -= betCost;
+
+			// Select random game outcome from base books
+			const randomBookIndex = Math.floor(Math.random() * base_books.length);
+			const selectedBook = base_books[randomBookIndex];
+
+			// Execute game sequence
+			await playBet({
+				...selectedBook,
+				state: selectedBook.events as any // Type assertion for book events compatibility
+			});
+
+			// Process winnings and update balance
+			const winAmount = bookEventAmountToNormalisedAmount(selectedBook.baseGameWins);
+			stateBet.balanceAmount += winAmount;
+
+		} catch (error) {
+			// Handle game error gracefully
+			console.error('Game error:', error);
+			// Optionally restore bet amount on error
+			stateBet.balanceAmount += betCost;
+		}
+	};
+
+	// Subscribe to game events
 	context.eventEmitter.subscribeOnMount({
-		buyBonusConfirm: () => {
-			stateModal.modal = { name: 'buyBonusConfirm' };
-		},
-		bet: async () => {
-			// Deduct bet cost from balance
-			const betCost = stateBet.betAmount;
-			if (betCost <= stateBet.balanceAmount) {
-				// Set wagered amount to current bet for proper win scaling
-				stateBet.wageredBetAmount = betCost;
-				stateBet.balanceAmount -= betCost;
-
-				// Select a random book from base_books
-				const randomBookIndex = Math.floor(Math.random() * base_books.length);
-				const selectedBook = base_books[randomBookIndex];
-
-				// Play the entire book sequence using playBet
-				await playBet({
-					...selectedBook,
-					state: selectedBook.events
-				});
-
-				// Add winnings to balance (convert from book amount to currency amount)
-				const winAmount = bookEventAmountToNormalisedAmount(selectedBook.baseGameWins);
-				stateBet.balanceAmount += winAmount;
-			}
-		},
+		buyBonusConfirm: handleBuyBonusConfirm,
+		bet: handleBet,
 	});
 </script>
 
