@@ -84,12 +84,6 @@
 			{@render props.buttonMenu({ anchor: 0.5 })}
 		</Container>
 
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 + 440}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonBuyBonus({ anchor: 0.5 })}
-		</Container>
 
 
 		<Container

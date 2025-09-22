@@ -36,9 +36,6 @@
 			{@render props.buttonMenu({ anchor: 0.5 })}
 		</Container>
 
-		<Container y={LANDSCAPE_BASE_SIZE * 0.5 - 90} x={235} scale={0.8}>
-			{@render props.buttonBuyBonus({ anchor: 0.5 })}
-		</Container>
 
 		<Container y={LANDSCAPE_BASE_SIZE * 0.5} x={420} scale={0.8}>
 			{@render props.amountBalance({ stacked: true })}

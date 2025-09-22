@@ -13,6 +13,8 @@
 	import { getContext } from '../game/context';
 	import { playBet } from '../game/utils';
 	import base_books from '../stories/data/base_books';
+	import EnableSound from './EnableSound.svelte';
+	import Sound from './Sound.svelte';
 	import LoadingScreen from './LoadingScreen.svelte';
 	import Background from './Background.svelte';
 	import BoardFrame from './BoardFrame.svelte';
@@ -52,6 +54,7 @@ import Win from './Win.svelte';
 </script>
 
 <App>
+	<EnableSound />
 	<EnableHotkey />
 	<EnablePixiExtension />
 
@@ -64,7 +67,8 @@ import Win from './Win.svelte';
 			context.stateXstate.value = 'idle';
 		}} />
 	{:else}
-		
+		<Sound />
+
 		<MainContainer>
 			<BoardFrame />
 		</MainContainer>

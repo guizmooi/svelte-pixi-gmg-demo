@@ -49,9 +49,6 @@
 			{@render props.buttonMenu({ anchor: 0.5 })}
 		</Container>
 
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={20 + 180}>
-			{@render props.buttonBuyBonus({ anchor: 0.5 })}
-		</Container>
 
 
 		<Container y={DESKTOP_BASE_SIZE * 0.5} x={1560 + 180}>
