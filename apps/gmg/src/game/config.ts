@@ -13,13 +13,6 @@ export default {
 			rtp: 0.97,
 			max_win: 5000.0,
 		},
-		bonus: {
-			cost: 100.0,
-			feature: false,
-			buyBonus: true,
-			rtp: 0.97,
-			max_win: 5000.0,
-		},
 	},
 	paylines: {
 		'1': [0, 0, 0], // Top row
@@ -29,11 +22,11 @@ export default {
 		'5': [2, 1, 0], // Diagonal bottom-left to top-right
 	},
 	symbols: {
-		H1: { paytable: { '3': 1 } },
-		H2: { paytable: { '3': 0.8 } },
-		H3: { paytable: { '3': 0.6 } },
-		H4: { paytable: { '3': 0.4 } },
-		H5: { paytable: { '3': 0.2 } },
+		H1: { paytable: { '3': 3.0 } },
+		H2: { paytable: { '3': 2.5 } },
+		H3: { paytable: { '3': 2.0 } },
+		H4: { paytable: { '3': 1.5 } },
+		H5: { paytable: { '3': 1.0 } },
 	},
 	paddingReels: {
 		basegame: [

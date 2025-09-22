@@ -6,6 +6,7 @@
 	import { MainContainer } from 'components-layout';
 	import { App, Text, REM } from 'pixi-svelte';
 	import { stateModal, stateBet } from 'state-shared';
+	import { bookEventAmountToNormalisedAmount } from 'utils-shared/amount';
 
 	import { UI, UiGameName } from 'components-ui-pixi-theme';
 	import { GameVersion, Modals } from 'components-ui-html';
@@ -34,6 +35,8 @@ import Win from './Win.svelte';
 			// Deduct bet cost from balance
 			const betCost = stateBet.betAmount;
 			if (betCost <= stateBet.balanceAmount) {
+				// Set wagered amount to current bet for proper win scaling
+				stateBet.wageredBetAmount = betCost;
 				stateBet.balanceAmount -= betCost;
 
 				// Select a random book from base_books
@@ -46,8 +49,9 @@ import Win from './Win.svelte';
 					state: selectedBook.events
 				});
 
-				// Add winnings to balance
-				stateBet.balanceAmount += selectedBook.baseGameWins;
+				// Add winnings to balance (convert from book amount to currency amount)
+				const winAmount = bookEventAmountToNormalisedAmount(selectedBook.baseGameWins);
+				stateBet.balanceAmount += winAmount;
 			}
 		},
 	});
