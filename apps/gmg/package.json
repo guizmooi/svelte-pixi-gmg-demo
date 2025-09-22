@@ -41,7 +41,7 @@
 		"components-layout": "workspace:*",
 		"components-ui-html": "workspace:*",
 		"components-pixi": "workspace:*",
-		"components-ui-pixi-theme": "workspace:*",
+		"components-ui-pixi": "workspace:*",
 		"utils-event-emitter": "workspace:*",
 		"utils-shared": "workspace:*",
 		"utils-xstate": "workspace:*",

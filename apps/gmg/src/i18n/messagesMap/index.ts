@@ -1,5 +1,5 @@
 import { mergeMessagesMaps } from 'utils-shared/i18n';
-import { messagesMap as messagesMapUiPixi } from 'components-ui-pixi-theme';
+import { messagesMap as messagesMapUiPixi } from 'components-ui-pixi';
 import { messagesMap as messagesMapUiHtml } from 'components-ui-html';
 
 import en from './en';

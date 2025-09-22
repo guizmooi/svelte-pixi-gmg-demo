@@ -22,7 +22,7 @@
 	import { bookEventAmountToNormalisedAmount } from 'utils-shared/amount';
 
 	// ===== UI COMPONENTS =====
-	import { UI, UiGameName } from 'components-ui-pixi-theme';
+	import { UI, UiGameName } from 'components-ui-pixi';
 	import { GameVersion, Modals } from 'components-ui-html';
 
 	// ===== GAME MODULES =====
