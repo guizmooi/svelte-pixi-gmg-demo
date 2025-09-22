@@ -34,7 +34,7 @@
 	// ===== MECHANICAL SHARK ANIMATION STATE =====
 	let animationTime = $state(0);
 	let animationFrame: number;
-	let lastSharkTime = $state(-20000); // Start with negative time to trigger initial animation
+	let lastSharkTime = $state(-19000); // Start with delay: 1s initial delay (20000 - 1000)
 	let sharkVisible = $state(false);
 
 	// Shark animation properties
@@ -81,8 +81,11 @@
 		if (animationTime - lastSharkTime >= SHARK_CONFIG.APPEARANCE_INTERVAL) {
 			sharkVisible = true;
 			lastSharkTime = animationTime;
-			// Ensure shark starts at scale 0.2
+			// Ensure shark starts at scale 0.2 and top-left position
+			const canvasHeight = context.stateLayoutDerived.canvasSizes().height;
 			sharkState.scale = 0.2;
+			sharkState.x = -SHARK_CONFIG.SIZE * 0.5; // Start off-screen left
+			sharkState.y = canvasHeight * 0.1; // Start at top
 		}
 
 		// Only animate shark when visible
@@ -94,10 +97,10 @@
 			const timeSinceStart = animationTime - lastSharkTime;
 			const progress = Math.min(timeSinceStart / SHARK_CONFIG.ANIMATION_CYCLE, 1);
 
-			// Movement path: middle left to bottom right
+			// Movement path: top left to bottom right
 			const startX = -SHARK_CONFIG.SIZE * 0.5; // Start slightly off-screen left
 			const endX = canvasWidth + SHARK_CONFIG.SIZE * 0.5; // End slightly off-screen right
-			const startY = canvasHeight * 0.5; // Start at middle
+			const startY = canvasHeight * 0.1; // Start at top
 			const endY = canvasHeight * 0.9; // End at bottom
 
 			// Smooth easing for natural movement
