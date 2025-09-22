@@ -164,23 +164,15 @@
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 440}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
 		>
-			<Container y={-190 - 210 * 3}>
-				{@render props.buttonPayTable({ anchor: 0.5 })}
-			</Container>
-
 			<Container y={-190 - 210 * 2}>
-				{@render props.buttonGameRules({ anchor: 0.5 })}
-			</Container>
-
-			<Container y={-190 - 210 * 1}>
 				{@render props.buttonSettings({ anchor: 0.5 })}
 			</Container>
 
-			<Container y={-190}>
+			<Container y={-190 - 210 * 1}>
 				{@render props.buttonSoundSwitch({ anchor: 0.5 })}
 			</Container>
 
-			<Container>
+			<Container y={-190}>
 				{@render props.buttonMenuClose({ anchor: 0.5 })}
 			</Container>
 		</Container>

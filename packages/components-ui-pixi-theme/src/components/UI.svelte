@@ -12,8 +12,6 @@
 	import LabelBalance from './LabelBalance.svelte';
 	import LabelWin from './LabelWin.svelte';
 	import LabelBet from './LabelBet.svelte';
-	import ButtonPayTable from './ButtonPayTable.svelte';
-	import ButtonGameRules from './ButtonGameRules.svelte';
 	import ButtonSettings from './ButtonSettings.svelte';
 	import ButtonBuyBonus from './ButtonBuyBonus.svelte';
 	import ButtonBet from './ButtonBet.svelte';
@@ -82,13 +80,6 @@
 			<ButtonMenuClose {...buttonProps} />
 		{/snippet}
 
-		{#snippet buttonPayTable(buttonProps)}
-			<ButtonPayTable {...buttonProps} />
-		{/snippet}
-
-		{#snippet buttonGameRules(buttonProps)}
-			<ButtonGameRules {...buttonProps} />
-		{/snippet}
 
 		{#snippet buttonSettings(buttonProps)}
 			<ButtonSettings {...buttonProps} />
