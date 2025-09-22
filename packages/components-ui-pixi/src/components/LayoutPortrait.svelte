@@ -77,41 +77,7 @@
 <MainContainer standard alignVertical="bottom">
 	<!-- drawer container -->
 	<Container y={drawerTween.current}>
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 440}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonMenu({ anchor: 0.5 })}
-		</Container>
-
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 + 440}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonBuyBonus({ anchor: 0.5 })}
-		</Container>
-
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonBet({ anchor: 0.5 })}
-		</Container>
-
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 180}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonAutoSpin({ anchor: 0.5 })}
-		</Container>
-
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 + 180}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
-		>
-			{@render props.buttonTurbo({ anchor: 0.5 })}
-		</Container>
-
+		
 		<Container
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - 270}
@@ -150,14 +116,14 @@
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 390}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - 85}
 		>
-			{@render props.buttonDecrease({ anchor: 0.5 })}
+			{@render props.buttonMenu({ anchor: 0.5 })}
 		</Container>
 
 		<Container
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 + 390}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - 85}
 		>
-			{@render props.buttonIncrease({ anchor: 0.5 })}
+			{@render props.buttonBet({ anchor: 0.5 })}
 		</Container>
 	{/if}
 
@@ -196,14 +162,6 @@
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 440}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - 400}
 		>
-			<Container y={-190 - 210 * 3}>
-				{@render props.buttonPayTable({ anchor: 0.5 })}
-			</Container>
-
-			<Container y={-190 - 210 * 2}>
-				{@render props.buttonGameRules({ anchor: 0.5 })}
-			</Container>
-
 			<Container y={-190 - 210 * 1}>
 				{@render props.buttonSettings({ anchor: 0.5 })}
 			</Container>

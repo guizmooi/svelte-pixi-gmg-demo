@@ -49,28 +49,8 @@
 			{@render props.buttonMenu({ anchor: 0.5 })}
 		</Container>
 
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={20 + 180}>
-			{@render props.buttonBuyBonus({ anchor: 0.5 })}
-		</Container>
-
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={-10 + 180 * 4}>
-			{@render props.buttonAutoSpin({ anchor: 0.5 })}
-		</Container>
-
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={-10 + 180 * 5}>
-			{@render props.buttonBet({ anchor: 0.5 })}
-		</Container>
-
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={-10 + 180 * 6}>
-			{@render props.buttonTurbo({ anchor: 0.5 })}
-		</Container>
-
-		<Container y={DESKTOP_BASE_SIZE * 0.5} x={1560}>
-			{@render props.buttonDecrease({ anchor: 0.5 })}
-		</Container>
-
 		<Container y={DESKTOP_BASE_SIZE * 0.5} x={1560 + 180}>
-			{@render props.buttonIncrease({ anchor: 0.5 })}
+			{@render props.buttonBet({ anchor: 0.5 })}
 		</Container>
 
 		{#if stateUi.freeSpinCounterShow}
@@ -100,14 +80,6 @@
 			x={100}
 			y={context.stateLayoutDerived.mainLayoutStandard().height - DESKTOP_BASE_SIZE - 30}
 		>
-			<Container y={DESKTOP_BASE_SIZE * 0.5 - 185 - 210 * 3}>
-				{@render props.buttonPayTable({ anchor: 0.5 })}
-			</Container>
-
-			<Container y={DESKTOP_BASE_SIZE * 0.5 - 185 - 210 * 2}>
-				{@render props.buttonGameRules({ anchor: 0.5 })}
-			</Container>
-
 			<Container y={DESKTOP_BASE_SIZE * 0.5 - 185 - 210 * 1}>
 				{@render props.buttonSettings({ anchor: 0.5 })}
 			</Container>
