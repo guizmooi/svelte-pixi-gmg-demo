@@ -17,7 +17,6 @@
 	import ButtonSettings from './ButtonSettings.svelte';
 	import ButtonBuyBonus from './ButtonBuyBonus.svelte';
 	import ButtonBet from './ButtonBet.svelte';
-	import ButtonTurbo from './ButtonTurbo.svelte';
 	import ButtonMenu from './ButtonMenu.svelte';
 	import ButtonMenuClose from './ButtonMenuClose.svelte';
 	import ButtonSoundSwitch from './ButtonSoundSwitch.svelte';
@@ -73,9 +72,6 @@
 			<ButtonBet {...buttonProps} />
 		{/snippet}
 
-		{#snippet buttonTurbo(buttonProps)}
-			<ButtonTurbo {...buttonProps} />
-		{/snippet}
 
 
 		{#snippet buttonMenu(buttonProps)}

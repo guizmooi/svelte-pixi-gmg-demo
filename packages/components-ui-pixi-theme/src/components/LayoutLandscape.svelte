@@ -52,9 +52,6 @@
 			{@render props.amountBet({ stacked: true })}
 		</Container>
 
-		<Container y={LANDSCAPE_BASE_SIZE * 0.5 - 90} x={1580} scale={0.8}>
-			{@render props.buttonTurbo({ anchor: 0.5 })}
-		</Container>
 
 		<Container y={LANDSCAPE_BASE_SIZE * 0.5 - 90} x={1580 + 150} scale={0.8}>
 			{@render props.buttonBet({ anchor: 0.5 })}

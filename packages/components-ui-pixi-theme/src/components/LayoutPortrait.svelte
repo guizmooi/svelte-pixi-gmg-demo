@@ -126,12 +126,6 @@
 			{@render props.amountBet({ stacked: true })}
 		</Container>
 
-		<Container
-			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 - 390}
-			y={context.stateLayoutDerived.mainLayoutStandard().height - 85}
-		>
-			{@render props.buttonTurbo({ anchor: 0.5 })}
-		</Container>
 
 		<Container
 			x={context.stateLayoutDerived.mainLayoutStandard().width * 0.5 + 390}
