@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import type { RawSymbol, SymbolState } from './types';
 
-export const SYMBOL_SIZE = 120;
+export const SYMBOL_SIZE = 130;
 
 export const REEL_PADDING = 0.53;
 
