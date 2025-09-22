@@ -40,7 +40,6 @@
 		"components-shared": "workspace:*",
 		"components-layout": "workspace:*",
 		"components-ui-html": "workspace:*",
-		"components-pixi": "workspace:*",
 		"components-ui-pixi-theme": "workspace:*",
 		"utils-event-emitter": "workspace:*",
 		"utils-shared": "workspace:*",
