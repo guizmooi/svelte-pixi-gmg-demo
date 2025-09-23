@@ -1,8 +1,10 @@
-# Web SDK
+# GMG Demo Project
 
-This is a web sdk that is convenient for you to develop a game in a declarative way. It is an optional way to build and launch your games on with [Stake Engine](https://engine.stake.com/) with some easy steps. It is powered by Svelte 5, PixiJS 8 and TurboRepo.
+This is a GMG company test project demonstrating a web SDK for declarative game development. The project showcases a 3×3 grid slot machine game (GMG) built with modern web technologies. It is powered by Svelte 5, PixiJS 8 and TurboRepo.
 
-- How to use: To have 100% freedom to any source code from this repo, start your own codebase based on this repo. You can change any source code as you need.
+- **Purpose**: Test project for GMG company to demonstrate game development capabilities
+- **Game Type**: 3×3 grid slot machine with 5 paylines (H1-H5 symbols)
+- **Technology**: Full-stack game development using modern web standards
 
 
 # Table of Contents
@@ -10,13 +12,15 @@ This is a web sdk that is convenient for you to develop a game in a declarative 
 - [Get Started](#getStarted)
   - [Installation](#installation)
   - [Run in Storybook](#runInStorybook)
-  - [Run in DEV Mode](#runInDevMode) 
+  - [Run in DEV Mode](#runInDevMode)
+- [GMG Project Structure](#gmgProjectStructure)
+- [Game Features](#gameFeatures) 
 
 <a name="getStarted"></a>
 
 # Get started
 
-Here is a complete tutorial to start with one of our sample games from storybook running and local test to build and launch it on [Stake Engine](https://engine.stake.com/). Please ignore those steps that you already know or done.
+Here is a complete tutorial to start with the GMG slot machine game from storybook running and local development. This guide covers the 3×3 grid slot machine implementation.
 
 <a name="installation"></a>
 
@@ -52,8 +56,9 @@ pnpm -v
 - Clone the repo to your local in VS Code terminal or others.
 
 ```
-git clone https://github.com/StakeEngine/web-sdk.git
-cd web-sdk
+# Clone this GMG demo project
+git clone https://github.com/guizmooi/svelte-pixi-gmg-demo.git
+cd svelte-pixi-gmg-demo
 ```
 
 - Install dependencies.
@@ -69,11 +74,11 @@ WIth out any error messages showing up, you are good to continue.
 ## Run in Storybook
 
 ```
-pnpm run storybook --filter=lines
+pnpm run storybook --filter=gmg
 ```
 
-- Run `pnpm run storybook --filter=<MODULE_NAME>` in the terminal to see the storybook of a sample game in a TurboRepo way. `<MODULE_NAME>` is the name in the package.json file of a module in apps or packages folders.
-- For example, we have `"name": "lines"` in the [apps/lines/package.json](/apps/lines/package.json), so we can find it and run its storybook.
+- Run `pnpm run storybook --filter=gmg` in the terminal to see the GMG slot machine game storybook.
+- The GMG app is located in `apps/gmg/` with `"name": "gmg"` in the [apps/gmg/package.json](/apps/gmg/package.json).
 - For Windows users, you might need to add the script with "cross-env" to make it work:
 ```
 "storybook": "cross-env PUBLIC_CHROMATIC=true storybook dev -p 6001 public",
@@ -93,14 +98,187 @@ pnpm run storybook --filter=lines
 
 ## Run in DEV Mode
 ```
-pnpm run dev --filter=lines
+pnpm run dev --filter=gmg
 ```
 - Open up the url showed in the terminal, you should see this:
 
 <img src="./documentation/get-started-dev.png" alt="isolated" width="100%"/>
 
-- It is all good to have that error screen for now, because we have not connected to the RGS with DEV mode. We will show you how to do that in the launch-a-game step.
+- The GMG game runs in development mode for local testing and demonstration purposes.
 
-- For more information about how the authentication is handled, please refer to [Authenticate.svelte](https://github.com/StakeEngine/web-sdk/blob/main/packages/components-shared/src/components/Authenticate.svelte)
+
+<a name="gmgProjectStructure"></a>
+
+# GMG Project Structure
+
+The GMG demo project follows a monorepo structure with TurboRepo, organized into apps and shared packages.
+
+## Project Overview
+```
+svelte-pixi-gmg-demo/
+├── apps/
+│   ├── gmg/                    # Main GMG slot machine game
+│   ├── lines/                  # Lines-based slot game example
+│   ├── cluster/                # Cluster-based game example
+│   ├── scatter/                # Scatter game example
+│   └── ways/                   # Ways game example
+├── packages/
+│   ├── pixi-svelte/           # Core PixiJS-Svelte integration
+│   ├── components-ui-pixi/    # UI components for PixiJS
+│   ├── components-pixi/       # Game-specific PixiJS components
+│   ├── components-shared/     # Shared UI components
+│   ├── state-shared/          # Global state management
+│   ├── utils-*/               # Utility libraries
+│   └── config-*/              # Build configurations
+└── documentation/             # Project documentation
+```
+
+## GMG App Structure
+```
+apps/gmg/
+├── src/
+│   ├── components/            # Game-specific components
+│   │   ├── Game.svelte       # Main game component
+│   │   ├── Symbol.svelte     # Symbol rendering component
+│   │   ├── SymbolSprite.svelte
+│   │   └── SymbolSpine.svelte
+│   ├── game/                  # Game logic and configuration
+│   │   ├── assets.ts         # Asset definitions
+│   │   ├── config.ts         # Game configuration
+│   │   ├── constants.ts      # Game constants
+│   │   ├── stateGame.svelte.ts # Game state management
+│   │   ├── types.ts          # TypeScript type definitions
+│   │   ├── utils.ts          # Game utility functions
+│   │   └── sound.ts          # Audio configuration
+│   ├── stories/               # Storybook stories
+│   │   ├── data/             # Test data for stories
+│   │   │   ├── base_books.ts # Game outcome scenarios
+│   │   │   └── base_events.ts # Individual game events
+│   │   ├── ComponentsGame.stories.svelte
+│   │   ├── ComponentsSymbol.stories.svelte
+│   │   ├── ComponentsBoard.stories.svelte
+│   │   ├── ModeBaseBook.stories.svelte
+│   │   └── ModeBaseBookEvent.stories.svelte
+│   └── routes/                # SvelteKit routes
+│       └── +page.svelte      # Main game page
+├── static/                    # Static assets
+│   └── assets/               # Game assets (spines, sprites, audio)
+│       ├── spines/           # Spine animation files
+│       ├── sprites/          # Sprite images and JSON
+│       ├── fonts/            # Custom fonts
+│       └── audio/            # Sound effects and music
+├── package.json
+├── vite.config.js
+└── STORYBOOK.md              # Storybook documentation
+```
+
+<a name="gameFeatures"></a>
+
+# Game Features
+
+## GMG Slot Machine Specifications
+
+### Game Mechanics
+- **Grid**: 3×3 symbol grid
+- **Paylines**: 5 total paylines
+  - 3 horizontal lines (top, middle, bottom rows)
+  - 2 diagonal lines (top-left to bottom-right, bottom-left to top-right)
+- **Symbols**: 5 high-value symbols (H1, H2, H3, H4, H5)
+- **Win Condition**: 3 matching symbols on any payline
+
+### Symbol Values
+- **H1**: 300 coins (highest value)
+- **H2**: 250 coins
+- **H3**: 200 coins
+- **H4**: 150 coins
+- **H5**: 100 coins (lowest value)
+
+### Technical Features
+- **Spine Animations**: Rich visual effects for symbols and wins
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Sound System**: Interactive audio feedback
+- **State Management**: XState for game flow, Svelte stores for UI
+- **Asset Loading**: Optimized loading with preload options
+- **Storybook Integration**: Comprehensive component testing
+
+### Development Features
+- **TypeScript**: Full type safety
+- **Component Architecture**: Modular and reusable components
+- **Book System**: Deterministic game outcomes for testing
+- **Hot Reload**: Instant development feedback
+- **Build Optimization**: Production-ready builds
+
+# Quick Start Commands
+
+## Development Commands
+```bash
+# Install dependencies
+pnpm install
+
+# Run GMG game in development mode
+pnpm run dev --filter=gmg
+
+# Run GMG game storybook
+pnpm run storybook --filter=gmg
+
+# Build GMG game for production
+pnpm run build --filter=gmg
+
+# Run tests (if available)
+pnpm run test --filter=gmg
+
+# Lint code
+pnpm run lint --filter=gmg
+```
+
+## Storybook Navigation
+
+When running the GMG storybook, you'll find these story categories:
+
+### Components
+- **`COMPONENTS/<Game>`** - Main game component testing
+- **`COMPONENTS/<Symbol>`** - Symbol rendering in all states
+- **`COMPONENTS/<Board>`** - Board interaction testing
+
+### Game Modes
+- **`MODE_BASE/book`** - Complete game sequence testing
+  - `random` - Plays random game outcomes
+- **`MODE_BASE/bookEvent`** - Individual event testing
+  - `reveal` - Symbol reveal animations
+  - `winInfo` - Win display logic
+  - `setWin`, `setTotalWin`, `finalWin` - Win processing
+
+## File Structure Guide
+
+### Key Configuration Files
+- `apps/gmg/src/game/config.ts` - Game rules and settings
+- `apps/gmg/src/game/constants.ts` - Symbol definitions and payouts
+- `apps/gmg/src/game/assets.ts` - Asset loading configuration
+
+### Component Files
+- `apps/gmg/src/components/Game.svelte` - Main game orchestrator
+- `apps/gmg/src/components/Symbol.svelte` - Symbol rendering logic
+
+### Story Files
+- `apps/gmg/src/stories/data/base_books.ts` - Predefined game outcomes
+- `apps/gmg/src/stories/data/base_events.ts` - Individual game events
+
+## Customization Guide
+
+### Adding New Symbols
+1. Add symbol definition to `constants.ts`
+2. Add asset references to `assets.ts`
+3. Update symbol states in `types.ts`
+4. Add test data to `base_books.ts`
+
+### Modifying Paylines
+1. Update payline logic in game configuration
+2. Modify win detection in game utils
+3. Update test books with new payline scenarios
+
+### Adding New Animations
+1. Add Spine assets to `static/assets/spines/`
+2. Register assets in `assets.ts`
+3. Update symbol configurations in `constants.ts`
 
 <a name="buildAGame"></a>
