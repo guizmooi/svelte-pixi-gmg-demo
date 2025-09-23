@@ -4,6 +4,7 @@ import Container, { type Props as ContainerProps } from './Container.svelte';
 import Rectangle, { type Props as RectangleProps } from './Rectangle.svelte';
 import Circle, { type Props as CircleProps } from './Circle.svelte';
 import Graphics, { type Props as GraphicsProps } from './Graphics.svelte';
+import GradientGraphics, { type Props as GradientGraphicsProps } from './GradientGraphics.svelte';
 import AnimatedSprite, { type Props as AnimatedSpriteProps } from './AnimatedSprite.svelte';
 import SpriteSheet, { type Props as SpriteSheetProps } from './SpriteSheet.svelte';
 import Sprite, { type Props as SpriteProps } from './Sprite.svelte';
@@ -32,6 +33,7 @@ export {
 	Rectangle,
 	Circle,
 	Graphics,
+	GradientGraphics,
 	AnimatedSprite,
 	SpriteSheet,
 	Sprite,
@@ -54,6 +56,7 @@ export type {
 	RectangleProps,
 	CircleProps,
 	GraphicsProps,
+	GradientGraphicsProps,
 	AnimatedSpriteProps,
 	SpriteSheetProps,
 	SpriteProps,

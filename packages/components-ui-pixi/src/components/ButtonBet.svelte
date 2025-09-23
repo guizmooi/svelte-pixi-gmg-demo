@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Container, Text, Graphics } from 'pixi-svelte';
-	import * as PIXI from 'pixi.js';
+	import { Container, Text, GradientGraphics } from 'pixi-svelte';
 	import { Button, type ButtonProps } from 'components-pixi';
 	import { OnHotkey } from 'components-shared';
 	import { stateBetDerived } from 'state-shared';
@@ -9,32 +8,11 @@
 	import { UI_BASE_FONT_SIZE, UI_BASE_SIZE } from '../constants';
 	import { i18nDerived } from '../i18n/i18nDerived';
 
-	// Create gradient background
-	const drawGradientBackground = (graphics: PIXI.Graphics, width: number, height: number, borderRadius: number) => {
-		// Create linear gradient from top to bottom
-		const gradient = new PIXI.FillGradient(0, 0, 0, height);
-		gradient.addColorStop(0, '#0000003d'); // Top color with transparency
-		gradient.addColorStop(1, '#00000029'); // Bottom color with transparency
-
-		graphics.roundRect(0, 0, width, height, borderRadius);
-		graphics.fill(gradient);
-
-		// Add solid border effect
-		graphics.roundRect(0, 0, width, height, borderRadius);
-		graphics.stroke({
-			color: 0x909090,
-			width: 3,
-			alpha: 1,
-		});
-	};
-
-	// Create blur filter for backdrop effect
-	const blurFilter = new PIXI.BlurFilter({
-		strength: 2,
-		quality: 4,
-	});
-
-	const containerFilters: PIXI.Filter[] = [];
+	// Gradient configuration
+	const gradientStops = [
+		{ offset: 0, color: '#0000003d' }, // Top color with transparency
+		{ offset: 1, color: '#00000029' }, // Bottom color with transparency
+	];
 
 	const props: Partial<Omit<ButtonProps, 'children'>> = $props();
 	const disabled = $derived(!stateBetDerived.isBetCostAvailable());
@@ -47,16 +25,16 @@
 		<Button {...props} {sizes} {onpress} {disabled}>
 			{#snippet children({ center, hovered }: any)}
 				<Container {...center}>
-					<Graphics
+					<GradientGraphics
 						x={-sizes.width / 2}
 						y={-sizes.height / 2}
-						filters={containerFilters}
-						draw={(graphics) => drawGradientBackground(
-							graphics,
-							sizes.width,
-							sizes.height,
-							35
-						)}
+						width={sizes.width}
+						height={sizes.height}
+						borderRadius={35}
+						{gradientStops}
+						strokeColor={0x909090}
+						strokeWidth={3}
+						strokeAlpha={1}
 					/>
 					<Text
 						x={0}

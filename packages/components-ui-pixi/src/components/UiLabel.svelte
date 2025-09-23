@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Text, Graphics } from 'pixi-svelte';
-	import * as PIXI from 'pixi.js';
+	import { Text, GradientGraphics } from 'pixi-svelte';
 	import { BRIGHT_YELLOW } from 'constants-shared/colors';
 	import { UI_BASE_FONT_SIZE } from '../constants';
 
@@ -43,49 +42,38 @@
 		},
 	} as const;
 
-	// Create gradient background
-	const drawGradientBackground = (graphics: PIXI.Graphics, width: number, height: number, borderRadius: number) => {
-		// Create linear gradient from top to bottom
-		const gradient = new PIXI.FillGradient(0, 0, 0, height);
-		gradient.addColorStop(0, '#0000003d'); // Top color with transparency
-		gradient.addColorStop(1, '#00000029'); // Bottom color with transparency
-
-		graphics.roundRect(0, 0, width, height, borderRadius);
-		graphics.fill(gradient);
-
-		// Add solid border effect
-		graphics.roundRect(0, 0, width, height, borderRadius);
-		graphics.stroke({
-			color: 0x909090,
-			width: 3,
-			alpha: 1,
-		});
-	};
+	// Gradient configuration
+	const gradientStops = [
+		{ offset: 0, color: '#0000003d' }, // Top color with transparency
+		{ offset: 1, color: '#00000029' }, // Bottom color with transparency
+	];
 </script>
 
 {#if props.stacked}
-	<Graphics
+	<GradientGraphics
 		y={-20}
 		x={-(UI_BASE_FONT_SIZE * 3 * (326 / 73)) / 2}
-		draw={(graphics) => drawGradientBackground(
-			graphics,
-			UI_BASE_FONT_SIZE * 3 * (326 / 73),
-			UI_BASE_FONT_SIZE * 3,
-			35
-		)}
+		width={UI_BASE_FONT_SIZE * 3 * (326 / 73)}
+		height={UI_BASE_FONT_SIZE * 3}
+		borderRadius={35}
+		{gradientStops}
+		strokeColor={0x909090}
+		strokeWidth={3}
+		strokeAlpha={1}
 	/>
 	<Text anchor={{ x: 0.5, y: 0 }} text={props.label.toUpperCase()} style={labelStyle} />
 	<Text anchor={{ x: 0.5, y: 0 }} text={props.value.toUpperCase()} style={valueStyle} y={UI_BASE_FONT_SIZE} />
 {:else}
-	<Graphics
+	<GradientGraphics
 		x={-90}
 		y={-(UI_BASE_FONT_SIZE * 3) / 2}
-		draw={(graphics) => drawGradientBackground(
-			graphics,
-			UI_BASE_FONT_SIZE * 3 * (326 / 73),
-			UI_BASE_FONT_SIZE * 3,
-			35
-		)}
+		width={UI_BASE_FONT_SIZE * 3 * (326 / 73)}
+		height={UI_BASE_FONT_SIZE * 3}
+		borderRadius={35}
+		{gradientStops}
+		strokeColor={0x909090}
+		strokeWidth={3}
+		strokeAlpha={1}
 	/>
 	<Text anchor={{ x: 0, y: 0.5 }} text={props.label.toUpperCase()} style={labelStyle} />
 	<Text

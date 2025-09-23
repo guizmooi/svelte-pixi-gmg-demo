@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { Text, Graphics } from 'pixi-svelte';
+	import { Text, GradientGraphics } from 'pixi-svelte';
 	import { Button, type ButtonProps } from 'components-pixi';
-	import * as PIXI from 'pixi.js';
 
 	import type { ButtonIcon } from '../types';
 	import type { Snippet } from 'svelte';
@@ -24,37 +23,25 @@
 		...buttonProps
 	}: Props = $props();
 
-	// Create gradient background function from UiLabel
-	const drawGradientBackground = (graphics: PIXI.Graphics, width: number, height: number, borderRadius: number) => {
-		// Create linear gradient from top to bottom
-		const gradient = new PIXI.FillGradient(0, 0, 0, height);
-		gradient.addColorStop(0, '#0000003d'); // Top color with transparency
-		gradient.addColorStop(1, '#00000029'); // Bottom color with transparency
-
-		graphics.roundRect(0, 0, width, height, borderRadius);
-		graphics.fill(gradient);
-
-		// Add solid border effect
-		graphics.roundRect(0, 0, width, height, borderRadius);
-		graphics.stroke({
-			color: 0x909090,
-			width: 3,
-			alpha: 1,
-		});
-	};
+	// Gradient configuration
+	const gradientStops = [
+		{ offset: 0, color: '#0000003d' }, // Top color with transparency
+		{ offset: 1, color: '#00000029' }, // Bottom color with transparency
+	];
 </script>
 
 <Button {...buttonProps}>
 	{#snippet children({ center, hovered, pressed }: any)}
-		<Graphics
+		<GradientGraphics
 			x={center.x - buttonProps.sizes.width / 2}
 			y={center.y - buttonProps.sizes.height / 2}
-			draw={(graphics) => drawGradientBackground(
-				graphics,
-				buttonProps.sizes.width,
-				buttonProps.sizes.height,
-				35
-			)}
+			width={buttonProps.sizes.width}
+			height={buttonProps.sizes.height}
+			borderRadius={35}
+			{gradientStops}
+			strokeColor={0x909090}
+			strokeWidth={3}
+			strokeAlpha={1}
 		/>
 
 		<Text
