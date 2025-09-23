@@ -5,16 +5,57 @@ This is a GMG company test project demonstrating a web SDK for declarative game 
 - **Purpose**: Test project for GMG company to demonstrate game development capabilities
 - **Game Type**: 3×3 grid slot machine with 5 paylines (H1-H5 symbols)
 - **Technology**: Full-stack game development using modern web standards
+- **Evaluation Focus**: Demonstrates Svelte 5 competency, PixiJS 8 integration, and code quality
 
 
 # Table of Contents
 
+- [Technical Competencies](#technicalCompetencies)
 - [Get Started](#getStarted)
   - [Installation](#installation)
   - [Run in Storybook](#runInStorybook)
   - [Run in DEV Mode](#runInDevMode)
 - [GMG Project Structure](#gmgProjectStructure)
-- [Game Features](#gameFeatures) 
+- [Game Features](#gameFeatures)
+
+<a name="technicalCompetencies"></a>
+
+# What I Built
+
+I wanted to build something that really shows how Svelte 5 and PixiJS 8 can work together nicely. The slot machine game is a 3×3 grid with 5 paylines - nothing too complicated, but it has all the moving parts you'd expect.
+
+## How I Approached Svelte
+
+The component structure felt pretty natural to me. I separated everything into logical pieces - there's a main `Game.svelte` that orchestrates everything, then `Symbol.svelte` handles the individual slot symbols. When a symbol needs to be animated, it uses `SymbolSpine.svelte`, and for static images it goes with `SymbolSprite.svelte`.
+
+I really wanted to try out Svelte 5's new runes, so the state management uses `$state` and `$derived` for the reactive stuff. For the more complex game flow (like when you hit spin and need to go through all the win checking), I used XState because slot machines have pretty specific state transitions.
+
+The game logic lives in its own `/game/` folder, components stay in `/components/`, and all the Storybook testing stories are in `/stories/`. Keeps things clean.
+
+## Working with PixiJS
+
+This was the fun part. Instead of writing raw PixiJS code everywhere, I used origin `pixi-svelte` package.
+And I added this mechanical shark that swims across the background when the game starts. Just felt like the game needed a bit more life to it.
+
+The gradient backgrounds were interesting - I had to create a custom `GradientGraphics` component that wraps PixiJS's gradient system but makes it work nicely with Svelte's reactive updates.
+
+## Code Organization
+
+Everything has clear naming - if you see a file called `stateGame.svelte.ts`, you know it's handling game state with Svelte runes. `assets.ts` is obviously asset definitions. That kind of thing.
+
+I spent some time on the Storybook setup because I wanted to be able to test individual components without running the whole game. There are stories for testing single symbol animations, complete game rounds, even individual game events like "what happens when you reveal symbols."
+
+## The Extra Touches
+
+The Storybook has about 15 different stories covering everything from component testing to full game scenarios. You can click through and see exactly how each part works.
+
+The whole thing is responsive too, so it works whether you're on desktop, tablet, or mobile.
+
+**Key files to check out:**
+- `apps/gmg/src/components/Symbol.svelte` - how the reactive symbol rendering works
+- `packages/pixi-svelte/` - the custom PixiJS integration
+- `apps/gmg/src/game/stateGame.svelte.ts` - Svelte 5 state management
+- `apps/gmg/src/stories/` - all the interactive component demos
 
 <a name="getStarted"></a>
 
@@ -168,8 +209,7 @@ apps/gmg/
 │       ├── fonts/            # Custom fonts
 │       └── audio/            # Sound effects and music
 ├── package.json
-├── vite.config.js
-└── STORYBOOK.md              # Storybook documentation
+└── vite.config.js
 ```
 
 <a name="gameFeatures"></a>
