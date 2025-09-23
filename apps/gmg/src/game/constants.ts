@@ -54,13 +54,6 @@ export const INITIAL_SYMBOL_STATE: SymbolState = 'static';
 
 const LOW_SYMBOL_SIZE = 0.9;
 
-const explosion = {
-	type: 'spine',
-	assetKey: 'explosion',
-	animationName: 'explosion',
-	sizeRatios: { width: 1, height: 1 },
-};
-
 const h1Static = { type: 'sprite', assetKey: 'h1.webp', sizeRatios: { width: 1, height: 1 } };
 const h2Static = { type: 'sprite', assetKey: 'h2.webp', sizeRatios: { width: 1, height: 1 } };
 const h3Static = { type: 'sprite', assetKey: 'h3.webp', sizeRatios: { width: 1, height: 1 } };
@@ -69,7 +62,6 @@ const h5Static = { type: 'sprite', assetKey: 'h5.webp', sizeRatios: { width: 1, 
 
 export const SYMBOL_INFO_MAP = {
 	H1: {
-		explosion,
 		win: {
 			type: 'spine',
 			assetKey: 'H1',
@@ -82,7 +74,6 @@ export const SYMBOL_INFO_MAP = {
 		land: h1Static,
 	},
 	H2: {
-		explosion,
 		win: {
 			type: 'spine',
 			assetKey: 'H2',
@@ -95,7 +86,6 @@ export const SYMBOL_INFO_MAP = {
 		land: h2Static,
 	},
 	H3: {
-		explosion,
 		win: {
 			type: 'spine',
 			assetKey: 'H3',
@@ -108,7 +98,6 @@ export const SYMBOL_INFO_MAP = {
 		land: h3Static,
 	},
 	H4: {
-		explosion,
 		win: {
 			type: 'spine',
 			assetKey: 'H4',
@@ -121,7 +110,6 @@ export const SYMBOL_INFO_MAP = {
 		land: h4Static,
 	},
 	H5: {
-		explosion,
 		win: {
 			type: 'spine',
 			assetKey: 'H5',

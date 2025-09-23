@@ -23,7 +23,7 @@
 	const symbolInfo = $derived(getSymbolInfo({ rawSymbol: props.rawSymbol, state: props.state }));
 	const isSprite = $derived(symbolInfo.type === 'sprite');
 	const showWinFrame = $derived(
-		['win', 'postWinStatic', 'explosion'].includes(props.state)	,
+		['win', 'postWinStatic'].includes(props.state),
 	);
 </script>
 

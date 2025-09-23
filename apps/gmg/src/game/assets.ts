@@ -53,15 +53,6 @@ export default {
 			scale: 2,
 		},
 	},
-	
-	explosion: {
-		type: 'spine',
-		src: {
-			atlas: new URL('../../assets/spines/symbols3/symbols3.atlas', import.meta.url).href,
-			skeleton: new URL('../../assets/spines/symbols3/explosion.json', import.meta.url).href,
-			scale: 2,
-		},
-	},
 	reelsFrame: {
 		type: 'sprites',
 		src: new URL('../../assets/sprites/reelsFrame/reels_frame.json', import.meta.url).href,
