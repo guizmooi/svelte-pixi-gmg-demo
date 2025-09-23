@@ -237,7 +237,7 @@ When running the GMG storybook, you'll find these story categories:
 - **`MODE_BASE/bookEvent`** - Individual event testing
   - `reveal` - Symbol reveal animations
   - `winInfo` - Win display logic
-  - `setWin`, `setTotalWin`, `finalWin` - Win processing
+  - `setWin`, `setTotalWin` - Win processing
 
 ## File Structure Guide
 

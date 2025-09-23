@@ -74,13 +74,3 @@
 	})}
 	{template}
 />
-
-<Story
-	name="finalWin"
-	args={templateArgs({
-		skipLoadingScreen: true,
-		data: events.finalWin,
-		action: async (data) => await playBookEvent(data, { bookEvents: [] }),
-	})}
-	{template}
-/>
