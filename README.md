@@ -220,15 +220,6 @@ pnpm run dev --filter=gmg
 
 # Run GMG game storybook
 pnpm run storybook --filter=gmg
-
-# Build GMG game for production
-pnpm run build --filter=gmg
-
-# Run tests (if available)
-pnpm run test --filter=gmg
-
-# Lint code
-pnpm run lint --filter=gmg
 ```
 
 ## Storybook Navigation
