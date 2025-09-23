@@ -118,10 +118,10 @@ The GMG demo project follows a monorepo structure with TurboRepo, organized into
 svelte-pixi-gmg-demo/
 ├── apps/
 │   ├── gmg/                    # Main GMG slot machine game
-│   ├── lines/                  # Lines-based slot game example
-│   ├── cluster/                # Cluster-based game example
-│   ├── scatter/                # Scatter game example
-│   └── ways/                   # Ways game example
+│   ├── .../                    # other example
+│   ├── .../                    # other example
+│   ├── .../                    # other example
+│   └── .../                    # other example
 ├── packages/
 │   ├── pixi-svelte/           # Core PixiJS-Svelte integration
 │   ├── components-ui-pixi/    # UI components for PixiJS
